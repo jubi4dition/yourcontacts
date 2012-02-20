@@ -27,7 +27,7 @@
 		<div class="row">
 			<div class="span4">
 			<form id="formDelete" class="well" accept-charset="utf-8">
-			<select id="formSelect" name="name" class="span3">
+			<select id="formSelect" name="name" class="input-large">
 				<?php 
 				foreach($contacts as $contact){
 					echo "<option value=\"".$contact['name']."\">".$contact['name']."</option>\n";	

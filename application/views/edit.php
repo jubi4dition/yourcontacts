@@ -27,15 +27,15 @@
 		<div class="row">
 			<div class="span4">
 			<form id="formEdit" class="well" accept-charset="utf-8">
-			<select id="formSelect" name="name" class="span3">
+			<select id="formSelect" name="name" class="input-large">
 				<?php 
 				foreach($contacts as $contact){
 					echo "<option value=\"".$contact['name']."\">".$contact['name']."</option>\n";	
 				}
 				?>
             </select>
-			<input type="email" name="email" class="span3" placeholder="Email" required maxlength="40" value="<?php echo $firstcontact['email'];?>">
-			<input type="text" name="phone" class="span3" placeholder="Phone" required maxlength="15" value="<?php echo $firstcontact['phone'];?>">
+			<input type="email" name="email" class="input-large" placeholder="Email" required maxlength="40" value="<?php echo $firstcontact['email'];?>">
+			<input type="text" name="phone" class="input-large" placeholder="Phone" required maxlength="15" value="<?php echo $firstcontact['phone'];?>">
 			<br>
 			<input type="submit" class="btn btn-warning btn-large" value="Edit Contact"/>
 			</form>

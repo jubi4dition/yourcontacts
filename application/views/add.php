@@ -27,9 +27,9 @@
 		<div class="row">
 			<div class="span4">
 			<form id="formAdd" class="well" accept-charset="utf-8">
-			<input type="text" name="name" class="span3" placeholder="Username" required maxlength="40">
-			<input type="email" name="email" class="span3" placeholder="Email" required maxlength="40">
-			<input type="text" name="phone" class="span3" placeholder="Phone" required maxlength="15">
+			<input type="text" name="name" class="input-large" placeholder="Username" required maxlength="40">
+			<input type="email" name="email" class="input-large" placeholder="Email" required maxlength="40">
+			<input type="text" name="phone" class="input-large" placeholder="Phone" required maxlength="15">
 			<br>
 			<input type="submit" class="btn btn-success btn-large" value="Add Contact"/>
 			</form>
