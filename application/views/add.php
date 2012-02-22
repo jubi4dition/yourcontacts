@@ -76,10 +76,8 @@
 				}
 				
 				$("#formAdd input[type='submit']").attr("value", "Add Contact");
-				$("#formAdd input[name='name']").val("");
-				$("#formAdd input[name='email']").val("");
-				$("#formAdd input[name='phone']").val("");
 				$("#formAdd input[type='submit']").removeAttr("disabled");
+				$("#formAdd input[name='name']").select();
 			});
 				
 			return false;
