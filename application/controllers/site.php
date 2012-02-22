@@ -44,10 +44,10 @@ class Site extends CI_Controller
 			));
 			echo $json;
 		}
-		else
-		{
-			if($this->contacts_model->add_contact($this->input->post('name'), $this->input->post('email'), 
-				$this->input->post('phone'), $this->session->userdata('uid')))
+		else{
+			$is_added = $this->contacts_model->add_contact($this->input->post('name'), $this->input->post('email'), 
+													$this->input->post('phone'), $this->session->userdata('uid'));
+			if($is_added)
 			{
 				$message = "<strong>".$this->input->post('name')."</strong> has been added!";
 				$json = json_encode(array(
@@ -56,8 +56,7 @@ class Site extends CI_Controller
 				));
 				echo $json;
 			}
-			else
-			{
+			else{
 				$message = "<strong>".$this->input->post('name')."</strong> already exists!";
 				$json = json_encode(array(
 					'isSuccessful' => FALSE,
@@ -98,8 +97,7 @@ class Site extends CI_Controller
 			));
 			echo $json;
 		}
-		else
-		{
+		else{
 			$name = $this->input->post('name');
 			$this->contacts_model->delete_contact($name, $this->session->userdata('uid'));
 			
@@ -151,8 +149,7 @@ class Site extends CI_Controller
 			));
 			echo $json;
 		}
-		else
-		{
+		else{
 			$this->contacts_model->update_contact($this->input->post('name'), $this->input->post('email'),
 									$this->input->post('phone'), $this->session->userdata('uid'));
 			
@@ -176,8 +173,7 @@ class Site extends CI_Controller
 		if ($this->form_validation->run() == FALSE){
 			$this->index();
 		}
-		else
-		{
+		else{
 			$contact = $this->contacts_model->get_contact_data($this->session->userdata('uid'), $this->input->post('name'));
 			
 			$json = json_encode(array(
@@ -216,9 +212,9 @@ class Site extends CI_Controller
 			));
 			echo $json;
 		}
-		else
-		{
-			if($this->contacts_model->validate_password($this->session->userdata('uid'), $this->input->post('oldpassword')))
+		else{
+			$pwd_valid = $this->contacts_model->validate_password($this->session->userdata('uid'), $this->input->post('oldpassword'));
+			if($pwd_valid)
 			{	
 				$this->contacts_model->update_password($this->session->userdata('uid'), $this->input->post('newpassword'));
 			
@@ -229,8 +225,7 @@ class Site extends CI_Controller
 				));
 				echo $json;
 			}
-			else
-			{
+			else{
 				$message = "<strong>Old Password</strong> is wrong!";
 				$json = json_encode(array(
 					'isSuccessful' => FALSE,
@@ -263,8 +258,8 @@ class Site extends CI_Controller
 			);
 			$this->session->set_userdata($data);
 			redirect('site');
-		}else
-		{
+		}
+		else{
 			$this->load->view('login', array('message' => TRUE));
 		}
 	}
