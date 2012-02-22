@@ -68,14 +68,16 @@
 				if(json.isSuccessful){
 					$("#successMessage").html(json.message);
 					$("#success").show();
+					$("#formPassword input[name='oldpassword']").val("");
+					$("#formPassword input[name='newpassword']").val("");
+					$("#formPassword input").blur();
 				}else{
 					$("#errorMessage").html(json.message);
 					$("#error").show();
+					$("#formPassword input[name='oldpassword']").select();
 				}
 				
 				$("#formPassword input[type='submit']").attr("value", "Change Password");
-				$("#formPassword input[name='oldpassword']").val("");
-				$("#formPassword input[name='newpassword']").val("");
 				$("#formPassword input[type='submit']").removeAttr("disabled");
 			});
 				
