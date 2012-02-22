@@ -40,7 +40,7 @@ class Site extends CI_Controller
 		{
 			$json = json_encode(array(
 				'isSuccessful' => FALSE,
-				'message' => "<strong>Add</strong> failed, bad input!"
+				'message' => "<strong>Adding</strong> failed!"
 			));
 			echo $json;
 		}
@@ -94,7 +94,7 @@ class Site extends CI_Controller
 		{
 			$json = json_encode(array(
 				'isSuccessful' => FALSE,
-				'message' => "<strong>Delete</strong> failed, bad input!"
+				'message' => "<strong>Deletion</strong> failed!"
 			));
 			echo $json;
 		}
@@ -147,7 +147,7 @@ class Site extends CI_Controller
 		{
 			$json = json_encode(array(
 				'isSuccessful' => FALSE,
-				'message' => "<strong>Edit</strong> failed!"
+				'message' => "<strong>Editing</strong> failed!"
 			));
 			echo $json;
 		}
@@ -156,7 +156,7 @@ class Site extends CI_Controller
 			$this->contacts_model->update_contact($this->input->post('name'), $this->input->post('email'),
 									$this->input->post('phone'), $this->session->userdata('uid'));
 			
-			$message = "<strong>Edit</strong> has been done!";
+			$message = "Editing for <strong>".$this->input->post('name')."</strong> has been done!";
 			$json = json_encode(array(
 				'isSuccessful' => TRUE,
 				'message' => $message
@@ -212,7 +212,7 @@ class Site extends CI_Controller
 		{
 			$json = json_encode(array(
 				'isSuccessful' => FALSE,
-				'message' => "<strong>Change</strong>Password failed!"
+				'message' => "<strong>Changing</strong> failed!"
 			));
 			echo $json;
 		}
