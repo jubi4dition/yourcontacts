@@ -2,25 +2,25 @@
 
 class Contacts_model extends CI_Model 
 {
-	function is_user($email, $password)
+	public function is_user($email, $password)
 	{
 		$query = $this->db->get_where('users', array('email' => $email, 'password' => md5($password)));
 		return ($query->num_rows == 1) ? TRUE : FALSE;
 	}
 	
-	function get_uid($email)
+	public function get_uid($email)
 	{
 		$row = $this->db->get_where('users', array('email' => $email))->row();
 		return $row->uid;
 	}
 	
-	function get_username($email)
+	public function get_username($email)
 	{
 		$row = $this->db->get_where('members2', array('email' => $email))->row();
 		return $row->username;
 	}
 	
-	function get_contacts($uid)
+	public function get_contacts($uid)
 	{
 		$contacts = $this->db->select('name, email, phone')->
 							order_by('name')->
@@ -28,7 +28,7 @@ class Contacts_model extends CI_Model
 	 	return $contacts;
 	}
 	
-	function get_contact_names($uid)
+	public function get_contact_names($uid)
 	{
 		$contacts = $this->db->select('name')->
 							order_by('name')->
@@ -36,7 +36,7 @@ class Contacts_model extends CI_Model
 	 	return $contacts;
 	}
 	
-	function get_contact_data($uid, $name)
+	public function get_contact_data($uid, $name)
 	{
 		$contact = $this->db->select('name, email, phone')->
 							get_where('contacts', array('uid' => $uid, 'name' => $name))->
@@ -44,12 +44,12 @@ class Contacts_model extends CI_Model
 	 	return $contact;
 	}
 	
-	function delete_contact($name, $uid)
+	public function delete_contact($name, $uid)
 	{
 		$this->db->delete('contacts', array('name' => $name, 'uid' => $uid)); 
 	}
 	
-	function add_contact($name, $email, $phone, $uid)
+	public function add_contact($name, $email, $phone, $uid)
 	{
 		$query = $this->db->get_where('contacts', array('name' => $name, 'uid' => $uid));
 		if($query->num_rows == 1){
@@ -59,18 +59,18 @@ class Contacts_model extends CI_Model
 		return TRUE;
 	}
 	
-	function update_contact($name, $email, $phone, $uid)
+	public function update_contact($name, $email, $phone, $uid)
 	{
 		$this->db->update('contacts', array('email' => $email, 'phone' => $phone), array('uid' => $uid, 'name' => $name));
 	}
 	
-	function validate_password($uid, $password)
+	public function validate_password($uid, $password)
 	{
 		$query = $this->db->get_where('users', array('uid' => $uid, 'password' => md5($password)));
 		return ($query->num_rows == 1) ? TRUE : FALSE;
 	}
 	
-	function update_password($uid, $password)
+	public function update_password($uid, $password)
 	{
 		$this->db->update('users', array('password' => md5($password)), array('uid' => $uid));
 	}
