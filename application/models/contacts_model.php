@@ -24,7 +24,7 @@ class Contacts_model extends CI_Model
 	{
 		$contacts = $this->db->select('name, email, phone')->
 							order_by('name')->
-							get_where('contacts', array('uid' => $uid))->result();
+							get_where('contacts', array('uid' => $uid))->result_array();
 	 	return $contacts;
 	}
 	

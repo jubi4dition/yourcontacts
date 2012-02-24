@@ -36,16 +36,14 @@
 			  </tr>
 			</thead>
 			<tbody>
-			<?php  
-			for($i=0; $i < count($contacts); $i++){
-				echo "<tr>\n";
-				echo "<td>".$i."</td>\n";
-				echo "<td>".$contacts[$i]->name."</td>\n";
-				echo "<td>".$contacts[$i]->email."</td>\n";
-				echo "<td>".$contacts[$i]->phone."</td>\n";
-				echo "</tr>";
-			}
-			?>
+			<?php for($i = 0; $i < count($contacts); $i++): ?>
+			<tr>
+			<td><?php echo $i; ?></td>
+			<td><?php echo $contacts[$i]['name']; ?></td>
+			<td><?php echo $contacts[$i]['email']; ?></td>
+			<td><?php echo $contacts[$i]['phone']; ?></td>
+			</tr>
+			<?php endfor;?>
 			</tbody>
 			</table>
 			</div>
