@@ -31,7 +31,7 @@ html,body {
 .content {
 	background-color: #fff;
 	padding: 20px;
-	margin: 0 -20px 18px;
+	margin: 0 0px 15px;
 	/* negative indent the amount of the padding to maintain the grid system */
 	-webkit-border-radius: 0 0 6px 6px;
 	-moz-border-radius: 0 0 6px 6px;
