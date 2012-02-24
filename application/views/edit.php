@@ -11,7 +11,8 @@
 			</ul>
 			<div class="pull-right">
 				<small class="navbar-text">User: <?php echo anchor('site/profile', $this->session->userdata('email'));?></small>
-				<a href="<?php echo site_url('site/logout');?>" class="btn" type="submit">Logout</a>
+				<a href="<?php echo site_url('site/logout');?>" class="btn btn-inverse">
+				<i class="icon-road icon-white"></i> <b>Logout</b></a>
 			</div>
 		</div>
 	</div>
@@ -34,10 +35,11 @@
 				}
 				?>
             </select>
-			<input type="email" name="email" class="input-large" placeholder="Email" required maxlength="40" value="<?php echo $firstcontact['email'];?>">
-			<input type="text" name="phone" class="input-large" placeholder="Phone" required maxlength="15" value="<?php echo $firstcontact['phone'];?>">
+			<input type="email" name="email" class="input-large" placeholder="Email" required maxlength="40" value="<?php echo $firstcontact['email'];?>"/>
+			<input type="text" name="phone" class="input-large" placeholder="Phone" required maxlength="15" value="<?php echo $firstcontact['phone'];?>"/>
 			<br>
-			<input type="submit" class="btn btn-warning btn-large" value="Edit Contact"/>
+			<button type="submit" class="btn btn-warning btn-large" data-loading-text="Sending...">
+			<i class="icon-pencil icon-white"></i> <b>Edit Contact</b></button>
 			</form>
 			</div>
 		</div>
@@ -59,13 +61,13 @@
 	</div>
 	<div id="testOutput"></div>
 	<script src="<?php echo base_url("js/jquery.js");?>"></script>
+	<script src="<?php echo base_url("js/bootstrap-button.js");?>"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
 		
 		$("#formEdit").submit(function(){
 			
-			$("#formEdit input[type='submit']").attr("disabled", "true");
-			$("#formEdit input[type='submit']").attr("value", "Sending...");
+			$("#formEdit button").button('loading');
 			$("#success").hide();
 			$("#error").hide();
 			
@@ -81,8 +83,7 @@
 					$("#error").show();
 				}
 				
-				$("#formEdit input[type='submit']").attr("value", "Edit Contact");
-				$("#formEdit input[type='submit']").removeAttr("disabled");
+				$("#formEdit button").button('reset');
 			});
 				
 			return false;

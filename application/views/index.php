@@ -11,7 +11,8 @@
 			</ul>
 			<div class="pull-right">
 				<small class="navbar-text">User: <?php echo anchor('site/profile', $this->session->userdata('email'));?></small>
-				<a href="<?php echo site_url('site/logout');?>" class="btn" type="submit">Logout</a>
+				<a href="<?php echo site_url('site/logout');?>" class="btn btn-inverse">
+				<i class="icon-road icon-white"></i> <b>Logout</b></a>
 			</div>
 		</div>
 	</div>

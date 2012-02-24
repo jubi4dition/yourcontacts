@@ -11,7 +11,8 @@
 			</ul>
 			<div class="pull-right">
 				<small class="navbar-text">User: <?php echo anchor('site/profile', $this->session->userdata('email'));?></small>
-				<a href="<?php echo site_url('site/logout');?>" class="btn" type="submit">Logout</a>
+				<a href="<?php echo site_url('site/logout');?>" class="btn btn-inverse">
+				<i class="icon-road icon-white"></i> <b>Logout</b></a>
 			</div>
 		</div>
 	</div>
@@ -34,7 +35,8 @@
 				}
 				?>
             </select>
-			<input type="submit" class="btn btn-danger btn-large" value="Delete Contact"/>
+			<button type="submit" class="btn btn-danger btn-large" data-loading-text="Sending...">
+			<i class="icon-trash icon-white"></i> <b>Delete Contact</b></button>
 			</form>
 			</div>
 		</div>
@@ -56,13 +58,13 @@
 	</div>
 	
 	<script src="<?php echo base_url("js/jquery.js");?>"></script>
+	<script src="<?php echo base_url("js/bootstrap-button.js");?>"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
 		
 		$("#formDelete").submit(function(){
 			
-			$("#formDelete input[type='submit']").attr("disabled", "true");
-			$("#formDelete input[type='submit']").attr("value", "Sending...");
+			$("#formDelete button").button('loading');
 			$("#success").hide();
 			$("#error").hide();
 			
@@ -80,8 +82,7 @@
 					$("#error").show();
 				}
 				
-				$("#formDelete input[type='submit']").attr("value", "Delete Contact");
-				$("#formDelete input[type='submit']").removeAttr("disabled");
+				$("#formDelete button").button('reset');
 			});
 				
 			return false;

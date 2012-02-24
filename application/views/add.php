@@ -11,7 +11,8 @@
 			</ul>
 			<div class="pull-right">
 				<small class="navbar-text">User: <?php echo anchor('site/profile', $this->session->userdata('email'));?></small>
-				<a href="<?php echo site_url('site/logout');?>" class="btn" type="submit">Logout</a>
+				<a href="<?php echo site_url('site/logout');?>" class="btn btn-inverse">
+				<i class="icon-road icon-white"></i> <b>Logout</b></a>
 			</div>
 		</div>
 	</div>
@@ -27,11 +28,12 @@
 		<div class="row">
 			<div class="span4">
 			<form id="formAdd" class="well" accept-charset="utf-8">
-			<input type="text" name="name" class="input-large" placeholder="Username" required maxlength="40">
-			<input type="email" name="email" class="input-large" placeholder="Email" required maxlength="40">
-			<input type="text" name="phone" class="input-large" placeholder="Phone" required maxlength="15">
+			<input type="text" name="name" class="input-large" placeholder="Username" required maxlength="40"/>
+			<input type="email" name="email" class="input-large" placeholder="Email" required maxlength="40"/>
+			<input type="text" name="phone" class="input-large" placeholder="Phone" required maxlength="15"/>
 			<br>
-			<input type="submit" class="btn btn-success btn-large" value="Add Contact"/>
+			<button type="submit" class="btn btn-success btn-large" data-loading-text="Sending...">
+			<i class="icon-file icon-white"></i> <b>Add Contact</b></button>
 			</form>
 			</div>
 		</div>
@@ -53,13 +55,13 @@
 	</div>
 	
 	<script src="<?php echo base_url("js/jquery.js");?>"></script>
+	<script src="<?php echo base_url("js/bootstrap-button.js");?>"></script>
 	<script>
 	$(document).ready(function() {
 		
 		$("#formAdd").submit(function(){
 			
-			$("#formAdd input[type='submit']").attr("disabled", "true");
-			$("#formAdd input[type='submit']").attr("value", "Sending...");
+			$("#formAdd button").button('loading');
 			$("#success").hide();
 			$("#error").hide();
 			
@@ -75,8 +77,7 @@
 					$("#error").show();
 				}
 				
-				$("#formAdd input[type='submit']").attr("value", "Add Contact");
-				$("#formAdd input[type='submit']").removeAttr("disabled");
+				$("#formAdd button").button('reset');
 				$("#formAdd input[name='name']").select();
 			});
 				
