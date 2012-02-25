@@ -58,6 +58,10 @@ html,body {
 	padding-left: 19px;
 	border-left: 1px solid #eee;
 }
+/*Centering button in navbar*/
+.navbar .btn {
+  margin-top: 0; 
+}
 </style>
 
 <!-- Le fav and touch icons -->
