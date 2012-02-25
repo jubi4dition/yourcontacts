@@ -3,6 +3,14 @@ YOUR CONTACTS
 
 This is the Changelog for Your Contacts.
 
+Version 1.1.0
+-------------
+
+Here are the changes for Version 1.1.0
+
+* new buttons with icons, new script for button toggeling
+* adjust margin for content
+
 Version 1.0.1
 -------------
 
