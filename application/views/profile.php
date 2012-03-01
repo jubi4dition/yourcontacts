@@ -12,7 +12,7 @@
 			<div class="pull-right">
 				<small class="navbar-text">User: <?php echo anchor('site/profile', $this->session->userdata('email'));?></small>
 				<a href="<?php echo site_url('site/logout');?>" class="btn btn-inverse">
-				<i class="icon-road icon-white"></i> <b>Logout</b></a>
+				<i class="icon-road icon-white"></i> Logout</a>
 			</div>
 		</div>
 	</div>
@@ -31,7 +31,7 @@
 			<input type="text" name="newpassword" class="input-large" placeholder="New Password" required maxlength="20"/>
 			<br>
 			<button type="submit" class="btn btn-danger btn-large" data-loading-text="Sending...">
-			<i class="icon-refresh icon-white"></i> <b>Change Password</b></button>
+			<i class="icon-refresh icon-white"></i> Change Password</button>
 			</form>
 			</div>
 		</div>

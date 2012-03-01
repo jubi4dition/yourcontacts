@@ -12,7 +12,7 @@
 			<div class="pull-right">
 				<small class="navbar-text">User: <?php echo anchor('site/profile', $this->session->userdata('email'));?></small>
 				<a href="<?php echo site_url('site/logout');?>" class="btn btn-inverse">
-				<i class="icon-road icon-white"></i> <b>Logout</b></a>
+				<i class="icon-road icon-white"></i> Logout</a>
 			</div>
 		</div>
 	</div>
@@ -36,7 +36,7 @@
 				?>
             </select>
 			<button type="submit" class="btn btn-danger btn-large" data-loading-text="Sending...">
-			<i class="icon-trash icon-white"></i> <b>Delete Contact</b></button>
+			<i class="icon-trash icon-white"></i> Delete Contact</button>
 			</form>
 			</div>
 		</div>

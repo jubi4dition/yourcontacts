@@ -26,7 +26,7 @@
 					<input type="password" class="input-large" name="password" placeholder="Password" required maxlength="20"/>
 					<br>
 					<!--input type="submit" class="btn btn-primary btn-large" value="Login"/-->
-					<button type="submit" class="btn btn-primary btn-large"><i class="icon-user icon-white"></i> <b>Login</b></button>
+					<button type="submit" class="btn btn-primary btn-large"><i class="icon-user icon-white"></i> Login</button>
 				</form>
 			</div>
 		</div>
