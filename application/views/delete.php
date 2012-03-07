@@ -3,15 +3,15 @@
 <div class="navbar navbar-fixed">
 	<div class="navbar-inner">
 		<div class="container">
-			<a class="brand" href="<?php echo site_url('site');?>">Your Contacts</a>
+			<a class="brand" href="<?=site_url('site')?>">Your Contacts</a>
 			<ul class="nav">
-				<li><?php echo anchor('site/add', 'Add');?></li>
-				<li class="active"><?php echo anchor('site/delete', 'Delete');?></li>
-				<li><?php echo anchor('site/edit', 'Edit');?></li>
+				<li><?=anchor('site/add', 'Add')?></li>
+				<li class="active"><?=anchor('site/delete', 'Delete')?></li>
+				<li><?=anchor('site/edit', 'Edit')?></li>
 			</ul>
 			<div class="pull-right">
-				<small class="navbar-text">User: <?php echo anchor('site/profile', $this->session->userdata('email'));?></small>
-				<a href="<?php echo site_url('site/logout');?>" class="btn btn-primary">
+				<small class="navbar-text">User: <?=anchor('site/profile', $this->session->userdata('email'))?></small>
+				<a href="<?=site_url('site/logout')?>" class="btn btn-primary">
 				<i class="icon-road icon-white"></i> Logout</a>
 			</div>
 		</div>
@@ -29,12 +29,10 @@
 			<div class="span4">
 			<form id="formDelete" class="well" accept-charset="utf-8">
 			<select id="formSelect" name="name" class="input-large">
-				<?php 
-				foreach($contacts as $contact){
-					echo "<option value=\"".$contact['name']."\">".$contact['name']."</option>\n";	
-				}
-				?>
-            </select>
+			<?php foreach($contacts as $contact): ?>
+				<option value="<?=$contact['name']?>"><?=$contact['name']?></option>	
+			<?php endforeach;?>
+    		</select>
 			<button type="submit" class="btn btn-danger btn-large" data-loading-text="Sending...">
 			<i class="icon-trash icon-white"></i> Delete Contact</button>
 			</form>
@@ -57,8 +55,8 @@
       	
 	</div>
 	
-	<script src="<?php echo base_url("js/jquery.js");?>"></script>
-	<script src="<?php echo base_url("js/bootstrap-button.js");?>"></script>
+	<script src="<?=base_url("js/jquery.js")?>"></script>
+	<script src="<?=base_url("js/bootstrap-button.js")?>"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
 		
@@ -68,7 +66,7 @@
 			$("#success").hide();
 			$("#error").hide();
 			
-			var faction = "<?php echo site_url('site/delete_contact')?>";
+			var faction = "<?=site_url('site/delete_contact')?>";
 			var fdata = $("#formDelete").serialize();
 
 			$.post(faction, fdata, function(rdata){
