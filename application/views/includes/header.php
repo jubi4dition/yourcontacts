@@ -11,8 +11,14 @@
     <![endif]-->
 
 <!-- Le styles -->
-<link href="<?php echo base_url('css/bootstrap.css');?>" rel="stylesheet" type="text/css" />
-<link href="<?php echo base_url('css/yourcontacts.css');?>" rel="stylesheet" type="text/css" />
+<link href="<?php 
+	echo base_url('css/bootstrap.css');
+	//echo base_url('css/bootstrap-cerulean.css');
+	//echo base_url('css/bootstrap-united.css');
+	//echo base_url('css/bootstrap-simplex.css');
+	//echo base_url('css/bootstrap-journal.css');
+?>" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url('css/yourcontacts.css'); ?>" rel="stylesheet" type="text/css" />
 <!-- Le fav and touch icons -->
 <link href="<?php echo base_url('css/ico/favicon.ico');?>" rel="shortcut icon" />
 
