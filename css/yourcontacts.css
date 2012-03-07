@@ -2,12 +2,15 @@
 html,body {
 	background-color: #eee;
 }
+body {
+	overflow-y: scroll;	/*force vertical scrollbar*/
+}
 .container>footer p {
 	text-align: center; /* center align it with the container */
 }
 .container {
 	width: 820px;
-	/* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
+	/* downsize our container to make the content feel a bit tighter and more cohesive.*/
 }
 /* The white background content wrapper */
 .content {
@@ -28,7 +31,6 @@ html,body {
 	padding: 20px 20px 10px;
 	margin: -20px -20px 20px;
 }
-
 /* Styles you shouldn't keep as they are for displaying this base example only */
 .content .span7,.content {
 	min-height: 350px;
@@ -39,11 +41,9 @@ html,body {
 	padding-left: 19px;
 	border-left: 1px solid #eee;
 }
-/*Centering button in navbar*/
 .navbar .btn {
-  margin-top: 0; 
+  margin-top: 0; 	/*Centering button in navbar*/
 }
-/*All buttons bold*/
 .btn {
-	font-weight: bold;
+	font-weight: bold; /*All buttons bold*/
 }
