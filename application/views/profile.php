@@ -3,15 +3,15 @@
 <div class="navbar navbar-fixed">
 	<div class="navbar-inner">
 		<div class="container">
-			<a class="brand" href="<?php echo site_url('site');?>">Your Contacts</a>
+			<a class="brand" href="<?=site_url('site')?>">Your Contacts</a>
 			<ul class="nav">
-				<li><?php echo anchor('site/add', 'Add');?></li>
-				<li><?php echo anchor('site/delete', 'Delete');?></li>
-				<li><?php echo anchor('site/edit', 'Edit');?></li>
+				<li><?=anchor('site/add', 'Add')?></li>
+				<li><?=anchor('site/delete', 'Delete')?></li>
+				<li><?=anchor('site/edit', 'Edit')?></li>
 			</ul>
 			<div class="pull-right">
-				<small class="navbar-text">User: <?php echo anchor('site/profile', $this->session->userdata('email'));?></small>
-				<a href="<?php echo site_url('site/logout');?>" class="btn btn-primary">
+				<small class="navbar-text">User: <?=anchor('site/profile', $this->session->userdata('email'))?></small>
+				<a href="<?=site_url('site/logout')?>" class="btn btn-primary">
 				<i class="icon-road icon-white"></i> Logout</a>
 			</div>
 		</div>
@@ -52,8 +52,8 @@
 			
 	</div>
 	
-	<script src="<?php echo base_url("js/jquery.js");?>"></script>
-	<script src="<?php echo base_url("js/bootstrap-button.js");?>"></script>
+	<script src="<?=base_url("js/jquery.js")?>"></script>
+	<script src="<?=base_url("js/bootstrap-button.js")?>"></script>
 	<script>
 	$(document).ready(function() {
 		
@@ -63,7 +63,7 @@
 			$("#success").hide();
 			$("#error").hide();
 			
-			var faction = "<?php echo site_url('site/change_password')?>";
+			var faction = "<?=site_url('site/change_password')?>";
 			var fdata = $("#formPassword").serialize();
 			$.post(faction, fdata, function(rdata){
 				var json = jQuery.parseJSON(rdata);

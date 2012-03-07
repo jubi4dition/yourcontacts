@@ -3,15 +3,15 @@
 <div class="navbar navbar-fixed">
 	<div class="navbar-inner">
 		<div class="container">
-			<a class="brand" href="<?php echo site_url('site');?>">Your Contacts</a>
+			<a class="brand" href="<?=site_url('site')?>">Your Contacts</a>
 			<ul class="nav">
-				<li><?php echo anchor('site/add', 'Add');?></li>
-				<li><?php echo anchor('site/delete', 'Delete');?></li>
-				<li><?php echo anchor('site/edit', 'Edit');?></li>
+				<li><?=anchor('site/add', 'Add')?></li>
+				<li><?=anchor('site/delete', 'Delete')?></li>
+				<li><?=anchor('site/edit', 'Edit')?></li>
 			</ul>
 			<div class="pull-right">
-				<small class="navbar-text">User: <?php echo anchor('site/profile', $this->session->userdata('email'));?></small>
-				<a href="<?php echo site_url('site/logout');?>" class="btn btn-primary">
+				<small class="navbar-text">User: <?=anchor('site/profile', $this->session->userdata('email'))?></small>
+				<a href="<?=site_url('site/logout')?>" class="btn btn-primary">
 				<i class="icon-road icon-white"></i> Logout</a>
 			</div>
 		</div>
@@ -39,10 +39,10 @@
 			<tbody>
 			<?php for($i = 0; $i < count($contacts); $i++): ?>
 			<tr>
-			<td><?php echo $i; ?></td>
-			<td><?php echo $contacts[$i]['name']; ?></td>
-			<td><?php echo $contacts[$i]['email']; ?></td>
-			<td><?php echo $contacts[$i]['phone']; ?></td>
+			<td><?=$i?></td>
+			<td><?=$contacts[$i]['name']?></td>
+			<td><?=$contacts[$i]['email']?></td>
+			<td><?=$contacts[$i]['phone']?></td>
 			</tr>
 			<?php endfor;?>
 			</tbody>
