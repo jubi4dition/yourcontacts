@@ -3,13 +3,26 @@ YOUR CONTACTS
 
 This is the Changelog for Your Contacts.
 
+Version 1.2.0
+-------------
+
+Here are the changes for Version 1.2.0
+
+* Settling of extra css-styles in new file(yourcontacts.css)
+* Setting font-weight of all buttons to bold with css
+* Change of logout button type from inverse to primary
+* Enforcement of a vertical scrollbar
+* Adding of four new styles from bootswatch, Cerulean, United, Simplex and Journal
+* Usage of short open tags in PHP
+
 Version 1.1.0
 -------------
 
 Here are the changes for Version 1.1.0
 
-* new buttons with icons, new script for button toggeling
-* adjust margin for content
+* Usage of icons for buttons
+* Involvement of bootstrap-button.js script for button toggeling
+* Adjustment of margin for content to fit with navbar
 
 Version 1.0.1
 -------------
