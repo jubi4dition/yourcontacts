@@ -16,7 +16,7 @@
 			<div class="span4">
 				<form class="well" action="<?=site_url('site/check_login')?>" method="post" accept-charset="utf-8">
 					<input type="text" class="input-large" name="email" placeholder="Email" required maxlength="40" />
-					<input type="password" class="input-large" name="password" placeholder="Password" required maxlength="20" />
+					<input type="password" class="input-large" name="pwd" placeholder="Password" required maxlength="20" />
 					<br>
 					<button type="submit" class="btn btn-primary btn-large">
 					<i class="icon-user icon-white"></i> Login</button>

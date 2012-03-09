@@ -23,7 +23,7 @@
 		<div class="row">
 			<div class="span4">
 				<form id="formPassword" class="well" accept-charset="utf-8">
-					<input type="text" name="oldpassword" class="input-large" placeholder="Old Password" required maxlength="20" />
+					<input type="text" name="oldpassword" class="input-large" placeholder="Current Password" required maxlength="20" />
 					<input type="text" name="newpassword" class="input-large" placeholder="New Password" required maxlength="20" />
 					<br>
 					<button type="submit" class="btn btn-danger btn-large" data-loading-text="Sending...">
