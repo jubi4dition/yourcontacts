@@ -1,4 +1,4 @@
-<?php $this->load->view('includes/header'); ?>
+<? $this->load->view('includes/header'); ?>
 <div class="navbar navbar-fixed">
 	<div class="navbar-inner">
 		<div class="container">
@@ -9,10 +9,8 @@
 				<li><?=anchor('site/edit', 'Edit')?></li>
 			</ul>
 			<div class="pull-right">
-				<small class="navbar-text">User: <?=anchor('site/profile', $this->session->userdata('email'))?>
-				</small> <a href="<?=site_url('site/logout')?>"
-					class="btn btn-primary"> <i class="icon-road icon-white"></i>
-					Logout</a>
+				<small class="navbar-text">User: <?=anchor('site/profile', $this->session->userdata('email'))?> </small>
+				<a href="<?=site_url('site/logout')?>" class="btn btn-primary"><i class="icon-road icon-white"></i> Logout</a>
 			</div>
 		</div>
 	</div>
@@ -22,38 +20,29 @@
 		<div class="page-header">
 			<h1>Add A Contact</h1>
 		</div>
-
 		<div class="row">
 			<div class="span4">
 				<form id="formAdd" class="well" accept-charset="utf-8">
-					<input type="text" name="name" class="input-large"
-						placeholder="Username" required maxlength="40" /> <input
-						type="email" name="email" class="input-large" placeholder="Email"
-						required maxlength="40" /> <input type="text" name="phone"
-						class="input-large" placeholder="Phone" required maxlength="15" />
+					<input type="text" name="name" class="input-large" placeholder="Username" required maxlength="40" />
+					<input type="email" name="email" class="input-large" placeholder="Email" required maxlength="40" />
+					<input type="text" name="phone" class="input-large" placeholder="Phone" required maxlength="15" />
 					<br>
-					<button type="submit" class="btn btn-success btn-large"
-						data-loading-text="Sending...">
-						<i class="icon-file icon-white"></i> Add Contact
-					</button>
+					<button type="submit" class="btn btn-success btn-large" data-loading-text="Sending...">
+					<i class="icon-file icon-white"></i> Add Contact</button>
 				</form>
 			</div>
 		</div>
-
 		<div id="success" class="row" style="display: none">
 			<div class="span4">
 				<div id="successMessage" class="alert alert-success"></div>
 			</div>
 		</div>
-
 		<div id="error" class="row" style="display: none">
 			<div class="span4">
 				<div id="errorMessage" class="alert alert-error"></div>
 			</div>
 		</div>
-
 	</div>
-
 	<script src="<?=base_url("js/jquery.js")?>"></script>
 	<script src="<?=base_url("js/bootstrap-button.js")?>"></script>
 	<script>
@@ -85,4 +74,4 @@
 		});
 	});
 	</script>
-<?php $this->load->view('includes/footer'); ?>
+<? $this->load->view('includes/footer'); ?>
