@@ -3,6 +3,16 @@ YOUR CONTACTS
 
 This is the Changelog for Your Contacts.
 
+Version 1.2.1
+-------------
+
+Here are the changes for Version 1.2.1
+
+* Updating of short_open_tags in all view-files
+* Big Rework in source formatting in all view-files
+* Fixed typo in add.php
+* Changing of password-naming to pwd
+
 Version 1.2.0
 -------------
 
@@ -41,3 +51,4 @@ Version 1.0.0
 -------------
 
 This is the first Release of Your Contacts.
+
