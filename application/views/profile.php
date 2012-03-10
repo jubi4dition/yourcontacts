@@ -23,8 +23,8 @@
 		<div class="row">
 			<div class="span4">
 				<form id="formPassword" class="well" accept-charset="utf-8">
-					<input type="text" name="oldpassword" class="input-large" placeholder="Current Password" required maxlength="20" />
-					<input type="text" name="newpassword" class="input-large" placeholder="New Password" required maxlength="20" />
+					<input type="text" name="curpwd" class="input-large" placeholder="Current Password" required maxlength="20" />
+					<input type="text" name="newpwd" class="input-large" placeholder="New Password" required maxlength="20" />
 					<br>
 					<button type="submit" class="btn btn-danger btn-large" data-loading-text="Sending...">
 					<i class="icon-refresh icon-white"></i> Change Password</button>
@@ -60,13 +60,13 @@
 				if(json.isSuccessful){
 					$("#successMessage").html(json.message);
 					$("#success").show();
-					$("#formPassword input[name='oldpassword']").val("");
-					$("#formPassword input[name='newpassword']").val("");
+					$("#formPassword input[name='curpwd']").val("");
+					$("#formPassword input[name='oldpwd']").val("");
 					$("#formPassword input").blur();
 				}else{
 					$("#errorMessage").html(json.message);
 					$("#error").show();
-					$("#formPassword input[name='oldpassword']").select();
+					$("#formPassword input[name='oldpwd']").select();
 				}
 				
 				$("#formPassword button").button('reset');
