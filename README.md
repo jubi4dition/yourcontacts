@@ -6,7 +6,7 @@ It is based on CODEIGNITER and TWITTER BOOTSTRAP. The data is saved in a MYSQL d
 
 See it in action: http://youtu.be/QvU_K4gh_jI
 
-Current Version: **1.2.1**
+Current Version: **1.2.2**
 
 Usage
 -----

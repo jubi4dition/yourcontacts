@@ -3,6 +3,13 @@ YOUR CONTACTS
 
 This is the Changelog for Your Contacts.
 
+Version 1.2.2
+-------------
+
+Here are the changes for Version 1.2.2(2012/03/12)
+
+* Adding of new site.php which solves the problems with new password-naming
+
 Version 1.2.1
 -------------
 
