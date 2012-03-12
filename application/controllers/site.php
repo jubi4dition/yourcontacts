@@ -201,8 +201,8 @@ class Site extends CI_Controller
 		}
 		sleep(2);
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('oldpassword', 'Old Password', 'required|max_length[20]|alpha_numeric');
-		$this->form_validation->set_rules('newpassword', 'New Password', 'required|max_length[20]|alpha_numeric');
+		$this->form_validation->set_rules('curpwd', 'Old Password', 'required|max_length[20]|alpha_numeric');
+		$this->form_validation->set_rules('newpwd', 'New Password', 'required|max_length[20]|alpha_numeric');
 		
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -213,10 +213,10 @@ class Site extends CI_Controller
 			echo $json;
 		}
 		else{
-			$pwd_valid = $this->contacts_model->validate_password($this->session->userdata('uid'), $this->input->post('oldpassword'));
+			$pwd_valid = $this->contacts_model->validate_password($this->session->userdata('uid'), $this->input->post('curpwd'));
 			if($pwd_valid)
 			{	
-				$this->contacts_model->update_password($this->session->userdata('uid'), $this->input->post('newpassword'));
+				$this->contacts_model->update_password($this->session->userdata('uid'), $this->input->post('newpwd'));
 			
 				$message = "<strong>Password</strong> has been changed!";
 				$json = json_encode(array(
@@ -240,13 +240,13 @@ class Site extends CI_Controller
 	{			
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
-		$this->form_validation->set_rules('password', 'Password', 'required|max_length[20]|alpha_numeric');
+		$this->form_validation->set_rules('pwd', 'Password', 'required|max_length[20]|alpha_numeric');
 		if ($this->form_validation->run() == FALSE){
 			$this->load->view('login', array('message' => TRUE));
 			return;
 		}
 		
-		$isuser = $this->contacts_model->is_user($this->input->post('email'),  $this->input->post('password'));
+		$isuser = $this->contacts_model->is_user($this->input->post('email'),  $this->input->post('pwd'));
 		if($isuser)
 		{
 			$email = $this->input->post('email');
