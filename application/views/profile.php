@@ -66,12 +66,12 @@
 					$("#successMessage").html(json.message);
 					$("#success").show();
 					$("#formPassword input[name='curpwd']").val("");
-					$("#formPassword input[name='oldpwd']").val("");
+					$("#formPassword input[name='newpwd']").val("");
 					$("#formPassword input").blur();
 				}else{
 					$("#errorMessage").html(json.message);
 					$("#error").show();
-					$("#formPassword input[name='oldpwd']").select();
+					$("#formPassword input[name='curpwd']").select();
 				}
 				
 				$("#formPassword button").button('reset');
