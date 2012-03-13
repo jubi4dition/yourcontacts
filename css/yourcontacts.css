@@ -47,3 +47,6 @@ body {
 .btn {
 	font-weight: bold; /*All buttons bold*/
 }
+.navbar .brand {
+	padding: 4px 20px 4px; /*Smaller and centering Padding*/ 
+}

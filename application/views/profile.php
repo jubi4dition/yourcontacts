@@ -2,7 +2,7 @@
 <div class="navbar navbar-fixed">
 	<div class="navbar-inner">
 		<div class="container">
-			<a class="brand" href="<?=site_url('site')?>">Your Contacts</a>
+			<a class="brand" href="<?=site_url('site')?>"><img src="<?=base_url('css/img/yourcontacts.png')?>" width="57px"/></a>
 			<ul class="nav">
 				<li><?=anchor('site/add', 'Add')?></li>
 				<li><?=anchor('site/delete', 'Delete')?></li>
@@ -66,12 +66,12 @@
 					$("#successMessage").html(json.message);
 					$("#success").show();
 					$("#formPassword input[name='curpwd']").val("");
-					$("#formPassword input[name='newpwd']").val("");
+					$("#formPassword input[name='oldpwd']").val("");
 					$("#formPassword input").blur();
 				}else{
 					$("#errorMessage").html(json.message);
 					$("#error").show();
-					$("#formPassword input[name='curpwd']").select();
+					$("#formPassword input[name='oldpwd']").select();
 				}
 				
 				$("#formPassword button").button('reset');

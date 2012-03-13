@@ -2,7 +2,7 @@
 <div class="navbar navbar-fixed">
 	<div class="navbar-inner">
 		<div class="container">
-			<a class="brand" href="<?=site_url('site')?>">Your Contacts</a>
+			<a class="brand" href="<?=site_url('site')?>"><img src="<?=base_url('css/img/yourcontacts.png')?>" width="57px"/></a>
 			<ul class="nav">
 				<li class="active"><?=anchor('site/add', 'Add')?></li>
 				<li><?=anchor('site/delete', 'Delete')?></li>
