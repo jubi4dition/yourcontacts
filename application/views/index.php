@@ -25,10 +25,10 @@
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>#</th>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Phone</th>
+							<th><i class="icon-tags"></i></th>
+							<th><i class="icon-user"></i> Name</th>
+							<th><i class="icon-envelope"></i> Email</th>
+							<th><i class="icon-headphones"></i> Phone</th>
 						</tr>
 					</thead>
 					<tbody>

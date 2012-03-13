@@ -23,9 +23,14 @@
 		<div class="row">
 			<div class="span4">
 				<form id="formPassword" class="well" accept-charset="utf-8">
-					<input type="text" name="curpwd" class="input-large" placeholder="Current Password" required maxlength="20" />
-					<input type="text" name="newpwd" class="input-large" placeholder="New Password" required maxlength="20" />
-					<br>
+					<div class="input-prepend">
+						<span class="add-on"><i class="icon-lock"></i></span>
+						<input type="text" name="curpwd" class="input-large" placeholder="Current Password" required maxlength="20" />
+					</div>
+					<div class="input-prepend">
+						<span class="add-on"><i class="icon-lock"></i></span>
+						<input type="text" name="newpwd" class="input-large" placeholder="New Password" required maxlength="20" />
+					</div>
 					<button type="submit" class="btn btn-danger btn-large" data-loading-text="Sending...">
 					<i class="icon-refresh icon-white"></i> Change Password</button>
 				</form>
@@ -61,12 +66,12 @@
 					$("#successMessage").html(json.message);
 					$("#success").show();
 					$("#formPassword input[name='curpwd']").val("");
-					$("#formPassword input[name='oldpwd']").val("");
+					$("#formPassword input[name='newpwd']").val("");
 					$("#formPassword input").blur();
 				}else{
 					$("#errorMessage").html(json.message);
 					$("#error").show();
-					$("#formPassword input[name='oldpwd']").select();
+					$("#formPassword input[name='curpwd']").select();
 				}
 				
 				$("#formPassword button").button('reset');

@@ -23,16 +23,24 @@
 		<div class="row">
 			<div class="span4">
 				<form id="formEdit" class="well" accept-charset="utf-8">
-					<select id="formSelect" name="name" class="input-large">
-					<? foreach($contacts as $contact): ?>
-						<option value="<?=$contact['name']?>">
-						<?=$contact['name']?>
-						</option>
-					<? endforeach;?>
-					</select>
-					<input type="email" name="email" class="input-large" placeholder="Email" required maxlength="40" value="<?=$firstcontact['email']?>" />
-					<input type="text" name="phone" class="input-large" placeholder="Phone" required maxlength="15" value="<?=$firstcontact['phone']?>" />
-					<br>
+					<div class="input-prepend">
+						<span class="add-on"><i class="icon-user"></i></span>
+						<select id="formSelect" name="name" class="input-large">
+						<? foreach($contacts as $contact): ?>
+							<option value="<?=$contact['name']?>">
+							<?=$contact['name']?>
+							</option>
+						<? endforeach;?>
+						</select>
+					</div>
+					<div class="input-prepend">
+						<span class="add-on"><i class="icon-envelope"></i></span>
+						<input type="email" name="email" class="input-large" placeholder="Email" required maxlength="40" value="<?=$firstcontact['email']?>" />
+					</div>
+					<div class="input-prepend">
+						<span class="add-on"><i class="icon-headphones"></i></span>
+						<input type="text" name="phone" class="input-large" placeholder="Phone" required maxlength="15" value="<?=$firstcontact['phone']?>" />
+					</div>
 					<button type="submit" class="btn btn-warning btn-large" data-loading-text="Sending...">
 					<i class="icon-pencil icon-white"></i> Edit Contact</button>
 				</form>
