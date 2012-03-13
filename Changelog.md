@@ -3,6 +3,15 @@ YOUR CONTACTS
 
 This is the Changelog for Your Contacts.
 
+Version 1.3.0
+-------------
+
+Here are the changes for Version 1.3.0(2012/03/13)
+
+* Using prepended input with icons for new style
+* New Logo in navbar
+* Fixed script in profile.php
+
 Version 1.2.2
 -------------
 

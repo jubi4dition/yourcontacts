@@ -4,9 +4,9 @@ YOUR CONTACTS
 Your Contacts is a little webapplication to manage your contacts with name, email and phone. 
 It is based on CODEIGNITER and TWITTER BOOTSTRAP. The data is saved in a MYSQL database.
 
-See it in action: http://youtu.be/QvU_K4gh_jI
+See it in action: http://youtu.be/YjgOP1_5etk
 
-Current Version: **1.2.2**
+Current Version: **1.3.0**
 
 Usage
 -----
