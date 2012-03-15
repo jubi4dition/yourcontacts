@@ -51,8 +51,8 @@
 			</div>
 		</div>
 	</div>
-	<script src="<?=base_url("js/jquery.js")?>"></script>
-	<script src="<?=base_url("js/bootstrap-button.js")?>"></script>
+	<script src="<?=base_url('js/jquery.js')?>"></script>
+	<script src="<?=base_url('js/bootstrap-button.js')?>"></script>
 	<script>
 	$(document).ready(function() {
 		
