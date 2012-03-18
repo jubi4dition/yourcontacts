@@ -5,8 +5,7 @@ class Site extends CI_Controller
 	public function index()
 	{
 		if(!$this->is_logged_in()){
-			$this->load->view('login', array('message' => FALSE));
-			return;
+			redirect('login');
 		}
 		
 		$contacts = $this->contacts_model->get_contacts($this->session->userdata('uid'));
@@ -19,7 +18,7 @@ class Site extends CI_Controller
 	public function add()
 	{
 		if(!$this->is_logged_in()){
-			redirect('site');
+			redirect('login');
 		}
 		
 		$this->load->view('add');
@@ -28,7 +27,7 @@ class Site extends CI_Controller
 	public function add_contact()
 	{
 		if(!$this->is_logged_in()){
-			redirect('site');
+			redirect('login');
 		}
 		sleep(2);
 		$this->load->library('form_validation');
@@ -70,7 +69,7 @@ class Site extends CI_Controller
 	public function delete()
 	{
 		if(!$this->is_logged_in()){
-			redirect('site');
+			redirect('login');
 		}
 		
 		$contacts = $this->contacts_model->get_contact_names($this->session->userdata('uid'));
@@ -83,7 +82,7 @@ class Site extends CI_Controller
 	public function delete_contact()
 	{
 		if(!$this->is_logged_in()){
-			redirect('site');
+			redirect('login');
 		}
 		sleep(2);
 		$this->load->library('form_validation');
@@ -114,7 +113,7 @@ class Site extends CI_Controller
 	public function edit()
 	{
 		if(!$this->is_logged_in()){
-			redirect('site');
+			redirect('login');
 		}
 		
 		$contacts = $this->contacts_model->get_contact_names($this->session->userdata('uid'));
@@ -133,7 +132,7 @@ class Site extends CI_Controller
 	public function edit_contact()
 	{
 		if(!$this->is_logged_in()){
-			redirect('site');
+			redirect('login');
 		}
 		sleep(2);
 		$this->load->library('form_validation');
@@ -165,7 +164,7 @@ class Site extends CI_Controller
 	public function get_contact_data()
 	{
 		if(!$this->is_logged_in()){
-			redirect('site');
+			redirect('login');
 		}
 		
 		$this->load->library('form_validation');
@@ -188,7 +187,7 @@ class Site extends CI_Controller
 	public function profile()
 	{
 		if(!$this->is_logged_in()){
-			redirect('site');
+			redirect('login');
 		}
 		
 		$this->load->view('profile');
@@ -197,7 +196,7 @@ class Site extends CI_Controller
 	public function change_password()
 	{
 		if(!$this->is_logged_in()){
-			redirect('site');
+			redirect('login');
 		}
 		sleep(2);
 		$this->load->library('form_validation');
@@ -234,45 +233,6 @@ class Site extends CI_Controller
 				echo $json;
 			}
 		}
-	}
-	
-	public function check_login()
-	{			
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
-		$this->form_validation->set_rules('pwd', 'Password', 'required|max_length[20]|alpha_numeric');
-		if ($this->form_validation->run() == FALSE){
-			$this->load->view('login', array('message' => TRUE));
-			return;
-		}
-		
-		$isuser = $this->contacts_model->is_user($this->input->post('email'),  $this->input->post('pwd'));
-		if($isuser)
-		{
-			$email = $this->input->post('email');
-			$uid = $this->contacts_model->get_uid($email);
-			$data = array(
-				'email' => $email,
-				'uid' => $uid,
-				'is_logged_in' => TRUE
-			);
-			$this->session->set_userdata($data);
-			redirect('site');
-		}
-		else{
-			$this->load->view('login', array('message' => TRUE));
-		}
-	}
-	
-	public function logout()
-	{
-		if(!$this->is_logged_in()){
-			redirect('site');
-		}
-		
-		$this->session->set_userdata(array('is_logged_in' => FALSE));
-		$this->session->sess_destroy();
-		redirect('site');
 	}
 	
 	private function is_logged_in()
