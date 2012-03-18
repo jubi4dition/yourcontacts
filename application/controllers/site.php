@@ -2,12 +2,17 @@
 
 class Site extends CI_Controller 
 {
-	public function index()
+	public function __construct()
 	{
+		parent::__construct();
+		
 		if(!$this->is_logged_in()){
 			redirect('login');
 		}
-		
+	}
+	
+	public function index()
+	{
 		$contacts = $this->contacts_model->get_contacts($this->session->userdata('uid'));
 		
 		$this->load->view('index', array(
@@ -17,18 +22,11 @@ class Site extends CI_Controller
 	
 	public function add()
 	{
-		if(!$this->is_logged_in()){
-			redirect('login');
-		}
-		
 		$this->load->view('add');
 	}
 	
 	public function add_contact()
 	{
-		if(!$this->is_logged_in()){
-			redirect('login');
-		}
 		sleep(2);
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_name');
@@ -68,10 +66,6 @@ class Site extends CI_Controller
 	
 	public function delete()
 	{
-		if(!$this->is_logged_in()){
-			redirect('login');
-		}
-		
 		$contacts = $this->contacts_model->get_contact_names($this->session->userdata('uid'));
 		
 		$this->load->view('delete', array(
@@ -81,9 +75,6 @@ class Site extends CI_Controller
 	
 	public function delete_contact()
 	{
-		if(!$this->is_logged_in()){
-			redirect('login');
-		}
 		sleep(2);
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_name');
@@ -112,10 +103,6 @@ class Site extends CI_Controller
 	
 	public function edit()
 	{
-		if(!$this->is_logged_in()){
-			redirect('login');
-		}
-		
 		$contacts = $this->contacts_model->get_contact_names($this->session->userdata('uid'));
 		if(count($contacts) > 0){
 			$firstcontact = $this->contacts_model->get_contact_data($this->session->userdata('uid'), $contacts[0]['name']);
@@ -131,9 +118,6 @@ class Site extends CI_Controller
 	
 	public function edit_contact()
 	{
-		if(!$this->is_logged_in()){
-			redirect('login');
-		}
 		sleep(2);
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_name');
@@ -163,10 +147,6 @@ class Site extends CI_Controller
 	
 	public function get_contact_data()
 	{
-		if(!$this->is_logged_in()){
-			redirect('login');
-		}
-		
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_name');
 		if ($this->form_validation->run() == FALSE){
@@ -186,18 +166,11 @@ class Site extends CI_Controller
 	
 	public function profile()
 	{
-		if(!$this->is_logged_in()){
-			redirect('login');
-		}
-		
 		$this->load->view('profile');
 	}
 	
 	public function change_password()
 	{
-		if(!$this->is_logged_in()){
-			redirect('login');
-		}
 		sleep(2);
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('curpwd', 'Old Password', 'required|max_length[20]|alpha_numeric');
