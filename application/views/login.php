@@ -27,7 +27,7 @@
 				</form>
 			</div>
 		</div>
-		<? if($message == TRUE):?>
+		<? if($message == TRUE): ?>
 		<div class="row">
 			<div class="span4">
 				<div class="alert alert-error">
@@ -35,6 +35,14 @@
 				</div>
 			</div>
 		</div>
-		<? endif;?>
+		<? else: ?>
+		<div class="row">
+			<div class="span4">
+				<div class="alert">
+					<strong>You</strong> are not logged in!
+				</div>
+			</div>
+		</div>
+		<? endif; ?>
 	</div>
 <? $this->load->view('includes/footer'); ?>
