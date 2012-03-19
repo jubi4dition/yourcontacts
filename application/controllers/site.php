@@ -173,7 +173,7 @@ class Site extends CI_Controller
 	{
 		sleep(2);
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('curpwd', 'Old Password', 'required|max_length[20]|alpha_numeric');
+		$this->form_validation->set_rules('curpwd', 'Current Password', 'required|max_length[20]|alpha_numeric');
 		$this->form_validation->set_rules('newpwd', 'New Password', 'required|max_length[20]|alpha_numeric');
 		
 		if ($this->form_validation->run() == FALSE)
@@ -198,7 +198,7 @@ class Site extends CI_Controller
 				echo $json;
 			}
 			else{
-				$message = "<strong>Old Password</strong> is wrong!";
+				$message = "<strong>Current Password</strong> is wrong!";
 				$json = json_encode(array(
 					'isSuccessful' => FALSE,
 					'message' => $message
