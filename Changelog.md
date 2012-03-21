@@ -3,6 +3,15 @@ YOUR CONTACTS
 
 This is the Changelog for Your Contacts.
 
+Version 1.4.0
+-------------
+
+Here are the changes for Version 1.4.0(2012/03/21)
+
+* Using Font-Awesome for improved font and icons
+* New Controller Login
+* Smarter navbar creation for five views
+
 Version 1.3.0
 -------------
 
