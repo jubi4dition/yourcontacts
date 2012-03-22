@@ -74,5 +74,15 @@ class Contacts_model extends CI_Model
 	{
 		$this->db->update('users', array('password' => md5($password)), array('uid' => $uid));
 	}
+	
+	public function add_user($email, $password)
+	{
+		$query = $this->db->get_where('users', array('email' => $email));
+		if($query->num_rows == 1){
+			return FALSE;
+		}
+		$this->db->insert('users', array('email' => $email, 'password' => md5($password))); 
+		return TRUE;
+	}
 }
 /* End of file contacts_model.php */
