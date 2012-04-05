@@ -1,37 +1,36 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Site extends CI_Controller 
+class Admin extends CI_Controller 
 {
 	public function __construct()
 	{
 		parent::__construct();
 		
 		if(!$this->is_logged_in()){
-			redirect('login');
+			redirect('adminlogin');
 		}
 	}
 	
 	public function index()
 	{
-		$contacts = $this->contacts_model->get_contacts($this->session->userdata('uid'));
+		$users = $this->contacts_model->get_users();
 		
-		$this->load->view('index', array(
-			'contacts' => $contacts, 
+		$this->load->view('admin', array(
+			'users' => $users
 		));
 	}
 	
 	public function add()
 	{
-		$this->load->view('add');
+		$this->load->view('admin_add');
 	}
 	
-	public function add_contact()
+	public function add_user()
 	{
 		sleep(2);
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_name');
 		$this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
-		$this->form_validation->set_rules('phone', 'Phone', 'required|max_length[15]|alpha_numeric');
+		$this->form_validation->set_rules('pwd', 'Password', 'required|max_length[20]|alpha_numeric');
 		
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -42,11 +41,10 @@ class Site extends CI_Controller
 			echo $json;
 		}
 		else{
-			$is_added = $this->contacts_model->add_contact($this->input->post('name'), $this->input->post('email'), 
-								$this->input->post('phone'), $this->session->userdata('uid'));
+			$is_added = $this->contacts_model->add_user($this->input->post('email'), $this->input->post('pwd'));
 			if($is_added)
 			{
-				$message = "<strong>".$this->input->post('name')."</strong> has been added!";
+				$message = "<strong>".$this->input->post('email')."</strong> has been added!";
 				$json = json_encode(array(
 					'isSuccessful' => TRUE,
 					'message' => $message
@@ -54,7 +52,7 @@ class Site extends CI_Controller
 				echo $json;
 			}
 			else{
-				$message = "<strong>".$this->input->post('name')."</strong> already exists!";
+				$message = "<strong>".$this->input->post('email')."</strong> already exists!";
 				$json = json_encode(array(
 					'isSuccessful' => FALSE,
 					'message' => $message
@@ -66,18 +64,18 @@ class Site extends CI_Controller
 	
 	public function delete()
 	{
-		$contacts = $this->contacts_model->get_contact_names($this->session->userdata('uid'));
+		$users = $this->contacts_model->get_users();
 		
-		$this->load->view('delete', array(
-			'contacts' => $contacts, 
+		$this->load->view('admin_delete', array(
+			'users' => $users 
 		));
 	}
 	
-	public function delete_contact()
+	public function delete_user()
 	{
 		sleep(2);
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_name');
+		$this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
 		
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -88,14 +86,14 @@ class Site extends CI_Controller
 			echo $json;
 		}
 		else{
-			$name = $this->input->post('name');
-			$this->contacts_model->delete_contact($name, $this->session->userdata('uid'));
+			$email = $this->input->post('email');
+			$this->contacts_model->delete_user($email);
 			
-			$message = "<strong>".$name."</strong> has been deleted!";
+			$message = "<strong>".$email."</strong> has been deleted!";
 			$json = json_encode(array(
 				'isSuccessful' => TRUE,
 				'message' => $message,
-				'name' => $name
+				'email' => $email
 			));
 			echo $json;
 		}
@@ -103,27 +101,19 @@ class Site extends CI_Controller
 	
 	public function edit()
 	{
-		$contacts = $this->contacts_model->get_contact_names($this->session->userdata('uid'));
-		if(count($contacts) > 0){
-			$firstcontact = $this->contacts_model->get_contact_data(
-						$this->session->userdata('uid'), $contacts[0]['name']);
-		}else{
-			$firstcontact = array('email' => '', 'phone' => '');
-		}
+		$users = $this->contacts_model->get_users();
 		
-		$this->load->view('edit', array(
-			'contacts' => $contacts,
-			'firstcontact' => $firstcontact
+		$this->load->view('admin_edit', array(
+			'users' => $users 
 		));
 	}
 	
-	public function edit_contact()
+	public function edit_user()
 	{
 		sleep(2);
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_name');
 		$this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
-		$this->form_validation->set_rules('phone', 'Phone', 'required|max_length[15]|alpha_numeric');
+		$this->form_validation->set_rules('pwd', 'Password', 'required|max_length[20]|alpha_numeric');
 		
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -134,10 +124,9 @@ class Site extends CI_Controller
 			echo $json;
 		}
 		else{
-			$this->contacts_model->update_contact($this->input->post('name'), $this->input->post('email'),
-							$this->input->post('phone'), $this->session->userdata('uid'));
+			$this->contacts_model->update_user($this->input->post('email'), $this->input->post('pwd'));
 			
-			$message = "Editing for <strong>".$this->input->post('name')."</strong> has been done!";
+			$message = "Editing for <strong>".$this->input->post('email')."</strong> has been done!";
 			$json = json_encode(array(
 				'isSuccessful' => TRUE,
 				'message' => $message
@@ -168,7 +157,7 @@ class Site extends CI_Controller
 	
 	public function profile()
 	{
-		$this->load->view('profile');
+		$this->load->view('admin_profile');
 	}
 	
 	public function change_password()
@@ -187,12 +176,12 @@ class Site extends CI_Controller
 			echo $json;
 		}
 		else{
-			$pwd_valid = $this->contacts_model->validate_password($this->session->userdata('uid'), 
-										$this->input->post('curpwd'));
+			$pwd_valid = $this->contacts_model->validate_admin_password(
+							$this->session->userdata('admin'), $this->input->post('curpwd'));
 			if($pwd_valid)
 			{	
-				$this->contacts_model->update_password($this->session->userdata('uid'), 
-									$this->input->post('newpwd'));
+				$this->contacts_model->update_admin_password(
+						$this->session->userdata('admin'), $this->input->post('newpwd'));
 			
 				$message = "<strong>Password</strong> has been changed!";
 				$json = json_encode(array(
@@ -212,18 +201,9 @@ class Site extends CI_Controller
 		}
 	}
 	
-	/*private function is_logged_in()
-	{
-		$is_logged_in = $this->session->userdata('is_logged_in');
-		if(!isset($is_logged_in) || $is_logged_in != TRUE){
-			return FALSE;
-		}
-		return TRUE;
-	}*/
-	
 	private function is_logged_in()
 	{
-		return $this->session->userdata('is_logged_in');
+		return $this->session->userdata('is_admin');
 	}
 }
-/* End of file site.php */
+/* End of file admin.php */

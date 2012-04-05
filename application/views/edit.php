@@ -38,7 +38,7 @@
 		</div>
 		<div id="error" class="row" style="display: none">
 			<div class="span4">
-				<div id="errorMessage" class="alert alert-error">.</div>
+				<div id="errorMessage" class="alert alert-error"></div>
 			</div>
 		</div>
 	</div>

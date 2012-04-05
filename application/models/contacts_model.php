@@ -8,6 +8,12 @@ class Contacts_model extends CI_Model
 		return ($query->num_rows == 1) ? TRUE : FALSE;
 	}
 	
+	public function is_admin($name, $password)
+	{
+		$query = $this->db->get_where('admins', array('name' => $name, 'password' => md5($password)));
+		return ($query->num_rows == 1) ? TRUE : FALSE;
+	}
+	
 	public function get_uid($email)
 	{
 		$row = $this->db->get_where('users', array('email' => $email))->row();
@@ -46,7 +52,11 @@ class Contacts_model extends CI_Model
 	
 	public function delete_contact($name, $uid)
 	{
-		$this->db->delete('contacts', array('name' => $name, 'uid' => $uid)); 
+		$this->db->delete('contacts', array('name' => $name, 'uid' => $uid));
+
+		$this->db->set('contacts', 'contacts-1', FALSE);
+		$this->db->where('uid', $uid);
+		$this->db->update('users');
 	}
 	
 	public function add_contact($name, $email, $phone, $uid)
@@ -55,7 +65,12 @@ class Contacts_model extends CI_Model
 		if($query->num_rows == 1){
 			return FALSE;
 		}
-		$this->db->insert('contacts', array('name' => $name, 'email' => $email, 'phone' => $phone, 'uid' => $uid)); 
+		$this->db->insert('contacts', array('name' => $name, 'email' => $email, 'phone' => $phone, 'uid' => $uid));
+
+		$this->db->set('contacts', 'contacts+1', FALSE);
+		$this->db->where('uid', $uid);
+		$this->db->update('users');
+		
 		return TRUE;
 	}
 	
@@ -75,6 +90,17 @@ class Contacts_model extends CI_Model
 		$this->db->update('users', array('password' => md5($password)), array('uid' => $uid));
 	}
 	
+	public function validate_admin_password($name, $password)
+	{
+		$query = $this->db->get_where('admins', array('name' => $name, 'password' => md5($password)));
+		return ($query->num_rows == 1) ? TRUE : FALSE;
+	}
+	
+	public function update_admin_password($name, $password)
+	{
+		$this->db->update('admins', array('password' => md5($password)), array('name' => $name));
+	}
+	
 	public function add_user($email, $password)
 	{
 		$query = $this->db->get_where('users', array('email' => $email));
@@ -83,6 +109,24 @@ class Contacts_model extends CI_Model
 		}
 		$this->db->insert('users', array('email' => $email, 'password' => md5($password))); 
 		return TRUE;
+	}
+	
+	public function get_users()
+	{
+		$users = $this->db->select('email, contacts')->
+							order_by('email')->
+							get('users')->result_array();
+	 	return $users;
+	}
+	
+	public function delete_user($email)
+	{
+		$this->db->delete('users', array('email' => $email));
+	}
+	
+	public function update_user($email, $password)
+	{
+		$this->db->update('users', array('password' => md5($password)), array('email' => $email));
 	}
 }
 /* End of file contacts_model.php */

@@ -1,9 +1,9 @@
 <? $this->load->view('includes/header'); ?>
-<? $this->load->view('includes/navbar', array('active' => "no")); ?>
+<? $this->load->view('includes/admin_navbar', array('active' => 'no')); ?>
 <div class="container">
 	<div class="content">
 		<div class="page-header">
-			<h1>Change Your Password</h1>
+			<h1>Change the Admin Password</h1>
 		</div>
 		<div class="row">
 			<div class="span4">
@@ -43,7 +43,7 @@
 			$("#success").hide();
 			$("#error").hide();
 			
-			var faction = "<?=site_url('site/change_password')?>";
+			var faction = "<?=site_url('admin/change_password')?>";
 			var fdata = $("#formPassword").serialize();
 			$.post(faction, fdata, function(rdata){
 				var json = jQuery.parseJSON(rdata);

@@ -1,23 +1,23 @@
 <? $this->load->view('includes/header'); ?>
-<? $this->load->view('includes/navbar', array('active' => "no")); ?>
+<? $this->load->view('includes/admin_navbar', array('active' => 'add')); ?>
 <div class="container">
 	<div class="content">
 		<div class="page-header">
-			<h1>Change Your Password</h1>
+			<h1>Add A User</h1>
 		</div>
 		<div class="row">
 			<div class="span4">
-				<form id="formPassword" class="well" accept-charset="utf-8">
+				<form id="formAdd" class="well" accept-charset="utf-8">
 					<div class="input-prepend">
-						<span class="add-on"><i class="icon-lock"></i></span>
-						<input type="text" name="curpwd" class="input-large" placeholder="Current Password" required maxlength="20" autofocus />
+						<span class="add-on"><i class="icon-envelope"></i></span>
+						<input type="text" class="input-large" name="email" placeholder="Email" required maxlength="40" autofocus />
 					</div>
 					<div class="input-prepend">
 						<span class="add-on"><i class="icon-lock"></i></span>
-						<input type="text" name="newpwd" class="input-large" placeholder="New Password" required maxlength="20" />
+						<input type="password" class="input-large" name="pwd" placeholder="Password" required maxlength="20" />
 					</div>
-					<button type="submit" class="btn btn-danger btn-large" data-loading-text="Sending...">
-					<i class="icon-refresh icon-white"></i> Change Password</button>
+					<button type="submit" class="btn btn-success btn-large" data-loading-text="Sending...">
+					<i class="icon-file icon-white"></i> Add User</button>
 				</form>
 			</div>
 		</div>
@@ -37,29 +37,26 @@
 	<script>
 	$(document).ready(function() {
 		
-		$("#formPassword").submit(function(){
+		$("#formAdd").submit(function(){
 			
-			$("#formPassword button").button('loading');
+			$("#formAdd button").button('loading');
 			$("#success").hide();
 			$("#error").hide();
 			
-			var faction = "<?=site_url('site/change_password')?>";
-			var fdata = $("#formPassword").serialize();
+			var faction = "<?=site_url('admin/add_user')?>";
+			var fdata = $("#formAdd").serialize();
 			$.post(faction, fdata, function(rdata){
 				var json = jQuery.parseJSON(rdata);
 				if(json.isSuccessful){
 					$("#successMessage").html(json.message);
 					$("#success").show();
-					$("#formPassword input[name='curpwd']").val("");
-					$("#formPassword input[name='newpwd']").val("");
-					$("#formPassword input").blur();
 				}else{
 					$("#errorMessage").html(json.message);
 					$("#error").show();
-					$("#formPassword input[name='curpwd']").select();
 				}
 				
-				$("#formPassword button").button('reset');
+				$("#formAdd button").button('reset');
+				$("#formAdd input[name='name']").select();
 			});
 				
 			return false;

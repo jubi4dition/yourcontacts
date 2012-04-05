@@ -74,7 +74,6 @@
 				}else{
 					$("#errorMessage").html(json.message);
 					$("#error").show();
-					$("#formSignup input").val("");
 					$("#formSignup input[name='email']").select();
 				}
 				

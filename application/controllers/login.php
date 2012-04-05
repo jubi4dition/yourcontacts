@@ -17,7 +17,8 @@ class Login extends CI_Controller
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
 		$this->form_validation->set_rules('pwd', 'Password', 'required|max_length[20]|alpha_numeric');
-		if ($this->form_validation->run() == FALSE){
+		if ($this->form_validation->run() == FALSE)
+		{
 			redirect('login/login_failed');
 		}
 		else{
@@ -29,7 +30,8 @@ class Login extends CI_Controller
 				$data = array(
 					'email' => $email,
 					'uid' => $uid,
-					'is_logged_in' => TRUE
+					'is_logged_in' => TRUE,
+					'is_admin' => FALSE
 				);
 				$this->session->set_userdata($data);
 				redirect('site');
@@ -57,13 +59,18 @@ class Login extends CI_Controller
 		}
 	}
 	
-	private function is_logged_in()
+	/*private function is_logged_in()
 	{
 		$is_logged_in = $this->session->userdata('is_logged_in');
 		if(!isset($is_logged_in) || $is_logged_in != TRUE){
 			return FALSE;
 		}
 		return TRUE;
+	}*/
+	
+	private function is_logged_in()
+	{
+		return $this->session->userdata('is_logged_in');
 	}
 }
 /*End of file login.php*/

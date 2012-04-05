@@ -46,27 +46,23 @@ class Signup extends CI_Controller
 				));
 				echo $json;
 			}
+			elseif($this->contacts_model->add_user($email,  $pwd))
+			{
+				$message = "<strong>Registration</strong> successful!";
+				$json = json_encode(array(
+					'isSuccessful' => TRUE,
+					'message' => $message
+				));
+				echo $json;
+			}
 			else
 			{
-				$isadded = $this->contacts_model->add_user($email,  $pwd);
-				if($isadded)
-				{
-					$message = "<strong>".$this->input->post('email')."</strong> has been signed up!";
-					$json = json_encode(array(
-						'isSuccessful' => TRUE,
-						'message' => $message
-					));
-					echo $json;
-				}
-				else
-				{
-					$message = "<strong>Email</strong> already exists!";
-					$json = json_encode(array(
-						'isSuccessful' => FALSE,
-						'message' => $message
-					));
-					echo $json;
-				}
+				$message = "<strong>Email</strong> already exists!";
+				$json = json_encode(array(
+					'isSuccessful' => FALSE,
+					'message' => $message
+				));
+				echo $json;
 			}
 		}
 	}//end sign_up

@@ -1,23 +1,25 @@
 <? $this->load->view('includes/header'); ?>
-<? $this->load->view('includes/navbar', array('active' => "no")); ?>
+<? $this->load->view('includes/admin_navbar', array('active' => 'delete')); ?>
 <div class="container">
 	<div class="content">
 		<div class="page-header">
-			<h1>Change Your Password</h1>
+			<h1>Delete A User</h1>
 		</div>
 		<div class="row">
 			<div class="span4">
-				<form id="formPassword" class="well" accept-charset="utf-8">
+				<form id="formDelete" class="well" accept-charset="utf-8">
 					<div class="input-prepend">
-						<span class="add-on"><i class="icon-lock"></i></span>
-						<input type="text" name="curpwd" class="input-large" placeholder="Current Password" required maxlength="20" autofocus />
-					</div>
-					<div class="input-prepend">
-						<span class="add-on"><i class="icon-lock"></i></span>
-						<input type="text" name="newpwd" class="input-large" placeholder="New Password" required maxlength="20" />
+						<span class="add-on"><i class="icon-user"></i></span>
+						<select id="formSelect" name="email" class="input-large">
+						<? foreach($users as $user): ?>
+							<option value="<?=$user['email']?>">
+							<?=$user['email']?>
+							</option>
+						<? endforeach;?>
+						</select>
 					</div>
 					<button type="submit" class="btn btn-danger btn-large" data-loading-text="Sending...">
-					<i class="icon-refresh icon-white"></i> Change Password</button>
+					<i class="icon-trash icon-white"></i> Delete User</button>
 				</form>
 			</div>
 		</div>
@@ -34,32 +36,30 @@
 	</div>
 	<script src="<?=base_url('js/jquery.js')?>"></script>
 	<script src="<?=base_url('js/bootstrap-button.js')?>"></script>
-	<script>
+	<script type="text/javascript">
 	$(document).ready(function() {
 		
-		$("#formPassword").submit(function(){
+		$("#formDelete").submit(function(){
 			
-			$("#formPassword button").button('loading');
+			$("#formDelete button").button('loading');
 			$("#success").hide();
 			$("#error").hide();
 			
-			var faction = "<?=site_url('site/change_password')?>";
-			var fdata = $("#formPassword").serialize();
+			var faction = "<?=site_url('admin/delete_user')?>";
+			var fdata = $("#formDelete").serialize();
+
 			$.post(faction, fdata, function(rdata){
 				var json = jQuery.parseJSON(rdata);
 				if(json.isSuccessful){
 					$("#successMessage").html(json.message);
 					$("#success").show();
-					$("#formPassword input[name='curpwd']").val("");
-					$("#formPassword input[name='newpwd']").val("");
-					$("#formPassword input").blur();
+					$("#formSelect option[value='"+ json.email + "']").remove();
 				}else{
 					$("#errorMessage").html(json.message);
 					$("#error").show();
-					$("#formPassword input[name='curpwd']").select();
 				}
 				
-				$("#formPassword button").button('reset');
+				$("#formDelete button").button('reset');
 			});
 				
 			return false;

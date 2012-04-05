@@ -10,7 +10,7 @@
 				<form id="formAdd" class="well" accept-charset="utf-8">
 					<div class="input-prepend">
 						<span class="add-on"><i class="icon-user"></i></span>
-						<input type="text" name="name" class="input-large" placeholder="Username" required maxlength="40" />
+						<input type="text" name="name" class="input-large" placeholder="Username" required maxlength="40" autofocus />
 					</div>
 					<div class="input-prepend">
 						<span class="add-on"><i class="icon-envelope"></i></span>
