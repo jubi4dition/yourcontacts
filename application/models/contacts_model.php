@@ -54,9 +54,9 @@ class Contacts_model extends CI_Model
 	{
 		$this->db->delete('contacts', array('name' => $name, 'uid' => $uid));
 
-		$this->db->set('contacts', 'contacts-1', FALSE);
-		$this->db->where('uid', $uid);
-		$this->db->update('users');
+		$this->db->set('contacts', 'contacts-1', FALSE)->
+				where('uid', $uid)->
+				update('users');
 	}
 	
 	public function add_contact($name, $email, $phone, $uid)
@@ -67,10 +67,9 @@ class Contacts_model extends CI_Model
 		}
 		$this->db->insert('contacts', array('name' => $name, 'email' => $email, 'phone' => $phone, 'uid' => $uid));
 
-		$this->db->set('contacts', 'contacts+1', FALSE);
-		$this->db->where('uid', $uid);
-		$this->db->update('users');
-		
+		$this->db->set('contacts', 'contacts+1', FALSE)->
+				where('uid', $uid)->
+				update('users');
 		return TRUE;
 	}
 	
