@@ -56,7 +56,7 @@
 				}
 				
 				$("#formAdd button").button('reset');
-				$("#formAdd input[name='name']").select();
+				$("#formAdd input[name='email']").select();
 			});
 				
 			return false;
