@@ -18,7 +18,7 @@
 					<tbody>
 					<? for($i = 0; $i < count($users); $i++): ?>
 						<tr>
-							<td><?=$i?></td>
+							<td><?=($i+1)?></td>
 							<td><?=$users[$i]['email']?></td>
 							<td><?=$users[$i]['contacts']?></td>
 						</tr>
