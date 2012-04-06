@@ -120,6 +120,9 @@ class Contacts_model extends CI_Model
 	
 	public function delete_user($email)
 	{
+		$uid = $this->db->get_where('users', array('email' => $email))->row()->uid;
+		$this->db->delete('contacts', array('uid' => $uid));
+		
 		$this->db->delete('users', array('email' => $email));
 	}
 	
