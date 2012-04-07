@@ -1,7 +1,7 @@
 <? $this->load->view('includes/header'); ?>
 <? $this->load->view('includes/admin_navbar', array('active' => 'edit')); ?>
 <div class="container">
-	<div class="content">
+	<div class="content" style="display:none">
 		<div class="page-header">
 			<h1>Edit A User</h1>
 		</div>
@@ -66,7 +66,8 @@
 				
 			return false;
 		});
-	
+
+		$(".content").fadeIn(1000);
 	});
 	</script>
 <? $this->load->view('includes/footer'); ?>
