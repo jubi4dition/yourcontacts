@@ -26,6 +26,28 @@ class Contacts_model extends CI_Model
 		return $row->username;
 	}
 	
+	public function validate_password($uid, $password)
+	{
+		$query = $this->db->get_where('users', array('uid' => $uid, 'password' => md5($password)));
+		return ($query->num_rows == 1) ? TRUE : FALSE;
+	}
+	
+	public function update_password($uid, $password)
+	{
+		$this->db->update('users', array('password' => md5($password)), array('uid' => $uid));
+	}
+	
+	public function validate_admin_password($name, $password)
+	{
+		$query = $this->db->get_where('admins', array('name' => $name, 'password' => md5($password)));
+		return ($query->num_rows == 1) ? TRUE : FALSE;
+	}
+	
+	public function update_admin_password($name, $password)
+	{
+		$this->db->update('admins', array('password' => md5($password)), array('name' => $name));
+	}
+	
 	public function get_contacts($uid)
 	{
 		$contacts = $this->db->select('name, email, phone')->
@@ -50,15 +72,6 @@ class Contacts_model extends CI_Model
 	 	return $contact;
 	}
 	
-	public function delete_contact($name, $uid)
-	{
-		$this->db->delete('contacts', array('name' => $name, 'uid' => $uid));
-
-		$this->db->set('contacts', 'contacts-1', FALSE)->
-				where('uid', $uid)->
-				update('users');
-	}
-	
 	public function add_contact($name, $email, $phone, $uid)
 	{
 		$query = $this->db->get_where('contacts', array('name' => $name, 'uid' => $uid));
@@ -73,31 +86,26 @@ class Contacts_model extends CI_Model
 		return TRUE;
 	}
 	
+	public function delete_contact($name, $uid)
+	{
+		$this->db->delete('contacts', array('name' => $name, 'uid' => $uid));
+
+		$this->db->set('contacts', 'contacts-1', FALSE)->
+				where('uid', $uid)->
+				update('users');
+	}
+	
 	public function update_contact($name, $email, $phone, $uid)
 	{
 		$this->db->update('contacts', array('email' => $email, 'phone' => $phone), array('uid' => $uid, 'name' => $name));
 	}
 	
-	public function validate_password($uid, $password)
+	public function get_users()
 	{
-		$query = $this->db->get_where('users', array('uid' => $uid, 'password' => md5($password)));
-		return ($query->num_rows == 1) ? TRUE : FALSE;
-	}
-	
-	public function update_password($uid, $password)
-	{
-		$this->db->update('users', array('password' => md5($password)), array('uid' => $uid));
-	}
-	
-	public function validate_admin_password($name, $password)
-	{
-		$query = $this->db->get_where('admins', array('name' => $name, 'password' => md5($password)));
-		return ($query->num_rows == 1) ? TRUE : FALSE;
-	}
-	
-	public function update_admin_password($name, $password)
-	{
-		$this->db->update('admins', array('password' => md5($password)), array('name' => $name));
+		$users = $this->db->select('email, contacts')->
+							order_by('email')->
+							get('users')->result_array();
+	 	return $users;
 	}
 	
 	public function add_user($email, $password)
@@ -108,14 +116,6 @@ class Contacts_model extends CI_Model
 		}
 		$this->db->insert('users', array('email' => $email, 'password' => md5($password))); 
 		return TRUE;
-	}
-	
-	public function get_users()
-	{
-		$users = $this->db->select('email, contacts')->
-							order_by('email')->
-							get('users')->result_array();
-	 	return $users;
 	}
 	
 	public function delete_user($email)
