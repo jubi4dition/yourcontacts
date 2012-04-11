@@ -73,14 +73,20 @@
 
 		$("#formSelect").change(function() {
 
+			$("#success").hide();
+			$("#error").hide();
+
 			var faction = "<?=site_url('site/get_contact_data')?>";
 			var fdata = $("#formSelect").serialize();
-			
 			$.post(faction, fdata, function(rdata){
 				var json = jQuery.parseJSON(rdata);
-				
-				$("#formEdit input[name='email']").val(json.email);
-				$("#formEdit input[name='phone']").val(json.phone);
+				if(json.isSuccessful){
+					$("#formEdit input[name='email']").val(json.email);
+					$("#formEdit input[name='phone']").val(json.phone);
+				}else{
+					$("#errorMessage").html(json.message);
+					$("#error").show();
+				}
 			});
 		});
 

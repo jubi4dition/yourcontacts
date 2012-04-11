@@ -151,18 +151,30 @@ class Site extends CI_Controller
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_name');
 		if ($this->form_validation->run() == FALSE){
-			$this->index();
+			$json = json_encode(array(
+				'isSuccessful' => FALSE,
+				'message' => "No <strong>Data</strong> for contact!"
+			));
+			echo $json;
 		}
 		else{
 			$contact = $this->contacts_model->get_contact_data(
 					$this->session->userdata('uid'), $this->input->post('name'));
-			
-			$json = json_encode(array(
-				'name' => $contact['name'],
-				'email' => $contact['email'],
-				'phone' => $contact['phone']
-			));
-			echo $json;
+			if(count($contact) == 0){
+				$json = json_encode(array(
+					'isSuccessful' => FALSE,
+					'message' => "No <strong>Data</strong> for contact!"
+				));
+				echo $json;
+			}
+			else{
+				$json = json_encode(array(
+					'isSuccessful' => TRUE,
+					'email' => $contact['email'],
+					'phone' => $contact['phone']
+				));
+				echo $json;
+			}
 		}
 	}
 	
@@ -211,15 +223,6 @@ class Site extends CI_Controller
 			}
 		}
 	}
-	
-	/*private function is_logged_in()
-	{
-		$is_logged_in = $this->session->userdata('is_logged_in');
-		if(!isset($is_logged_in) || $is_logged_in != TRUE){
-			return FALSE;
-		}
-		return TRUE;
-	}*/
 	
 	private function is_logged_in()
 	{
