@@ -15,7 +15,7 @@ class Site extends CI_Controller
 	{
 		$contacts = $this->contacts_model->get_contacts($this->session->userdata('uid'));
 		
-		$this->load->view('index', array(
+		$this->load->view('contacts', array(
 			'contacts' => $contacts, 
 		));
 	}
