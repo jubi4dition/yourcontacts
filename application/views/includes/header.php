@@ -19,6 +19,7 @@
 ?>" rel="stylesheet" type="text/css" />
 <link href="<?=base_url('css/yourcontacts.css')?>" rel="stylesheet" type="text/css" />
 <link href="<?=base_url('css/font-awesome.css')?>" rel="stylesheet" type="text/css" />
+<link href="<?=base_url('css/tablesorter.css')?>" rel="stylesheet" type="text/css" />
 <!-- Le fav and touch icons -->
 <link href="<?=base_url('css/ico/favicon.ico')?>" rel="shortcut icon" />
 </head>
