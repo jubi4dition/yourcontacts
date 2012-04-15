@@ -101,8 +101,7 @@ class Contacts_model extends CI_Model
 	
 	public function get_users()
 	{
-		$users = $this->db->select('email, contacts')->
-							order_by('email')->
+		$users = $this->db->order_by('uid')->
 							get('users')->result_array();
 	 	return $users;
 	}
