@@ -19,7 +19,7 @@
 					<tbody>
 					<? for($i = 0; $i < count($contacts); $i++): ?>
 						<tr>
-							<td><?=($i+1)?></td>
+							<td><?=$contacts[$i]['cid']?></td>
 							<td><?=$contacts[$i]['name']?></td>
 							<td><?=$contacts[$i]['email']?></td>
 							<td><?=$contacts[$i]['phone']?></td>

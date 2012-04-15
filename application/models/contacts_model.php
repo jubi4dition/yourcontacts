@@ -50,8 +50,7 @@ class Contacts_model extends CI_Model
 	
 	public function get_contacts($uid)
 	{
-		$contacts = $this->db->select('name, email, phone')->
-							order_by('name')->
+		$contacts = $this->db->order_by('cid')->
 							get_where('contacts', array('uid' => $uid))->result_array();
 	 	return $contacts;
 	}
