@@ -1,4 +1,4 @@
-<div class="navbar navbar-fixed">
+<div class="navbar">
 	<div class="navbar-inner">
 		<div class="container">
 			<a class="brand" href="<?=site_url('admin')?>"><img src="<?=base_url('css/img/yourcontacts.png')?>" width="57px"/></a>

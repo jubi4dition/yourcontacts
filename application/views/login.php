@@ -1,12 +1,5 @@
 <? $this->load->view('includes/header'); ?>
-<div class="navbar navbar-fixed">
-	<div class="navbar-inner">
-		<div class="container">
-			<a class="brand" href="<?=site_url('site')?>"><img src="<?=base_url('css/img/yourcontacts.png')?>" width="57px"/></a>
-			<p class="navbar-text pull-right">not logged in</p>
-		</div>
-	</div>
-</div>
+<? $this->load->view('includes/nli_navbar'); ?>
 <div class="container">
 	<div class="content">
 		<div class="page-header">
