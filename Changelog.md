@@ -3,6 +3,17 @@ YOUR CONTACTS
 
 This is the Changelog for Your Contacts.
 
+Version 2.0.0
+-------------
+
+Here are the changes for Version 2.0.0(2012/04/20)
+
+* New Signup-site
+* New Admin-site
+* Tablesorter
+* new styling
+* lots of bug-fixes
+
 Version 1.4.0
 -------------
 
