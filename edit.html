@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Your Contacts</title>
+<meta name="description" content="manage your contacts with name, email and phone">
+<meta name="author" content="yubi4dition">
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+	      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+<!-- Le styles -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/yourcontacts.css" rel="stylesheet" type="text/css" />
+<link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="css/tablesorter.css" rel="stylesheet" type="text/css" />
+<!-- Le fav and touch icons -->
+<link href="css/ico/favicon.ico" rel="shortcut icon" 
+</head>
+<body>
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container">
+			<<a class="brand" href="contacts.html"><img src="css/img/yourcontacts.png" width="57px"/></a>
+			<ul class="nav">
+				<li ><a href="add.html">Add</a></li>
+				<li ><a href="delete.html">Delete</a></li>
+				<li class="active"><a href="edit.html">Edit</a></li>
+			</ul>
+			<div class="pull-right">
+				<small class="navbar-text">User: <a href="profile.html">user1@mail.com</a> </small>
+				<a href="index.html" class="btn btn-primary"><i class="icon-road icon-white"></i> Logout</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="content" style="display:none">
+		<div class="page-header">
+			<h1>Edit A Contact</h1>
+		</div>
+		<div class="row">
+			<div class="span4">
+				<form id="formEdit" class="well" accept-charset="utf-8">
+					<div class="input-prepend">
+						<span class="add-on"><i class="icon-user"></i></span>
+						<select id="formSelect" name="name" class="input-large">
+													<option value="contact1">
+							contact1							</option>
+													<option value="contact10">
+							contact10							</option>
+													<option value="contact11">
+							contact11							</option>
+													<option value="contact12">
+							contact12							</option>
+													<option value="contact2">
+							contact2							</option>
+													<option value="contact3">
+							contact3							</option>
+													<option value="contact4">
+							contact4							</option>
+													<option value="contact5">
+							contact5							</option>
+													<option value="contact6">
+							contact6							</option>
+													<option value="contact7">
+							contact7							</option>
+													<option value="contact8">
+							contact8							</option>
+													<option value="contact9">
+							contact9							</option>
+												</select>
+					</div>
+					<div class="input-prepend">
+						<span class="add-on"><i class="icon-envelope"></i></span>
+						<input type="email" name="email" class="input-large" placeholder="Email" required maxlength="40" value="contact1@mail.com" />
+					</div>
+					<div class="input-prepend">
+						<span class="add-on"><i class="icon-headphones"></i></span>
+						<input type="text" name="phone" class="input-large" placeholder="Phone" required maxlength="15" value="111111222222222" />
+					</div>
+					<button type="submit" class="btn btn-warning btn-large" data-loading-text="Sending...">
+					<i class="icon-pencil icon-white"></i> Edit Contact</button>
+				</form>
+			</div>
+		</div>
+		<div id="success" class="row" style="display: none">
+			<div class="span4">
+				<div id="successMessage" class="alert alert-success"></div>
+			</div>
+		</div>
+		<div id="error" class="row" style="display: none">
+			<div class="span4">
+				<div id="errorMessage" class="alert alert-error"></div>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap-button.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$("#formEdit").submit(function(){
+			
+			$("#formEdit button").button('loading');
+				
+			window.setTimeout(function() {  
+        			$("#formEdit button").button('reset'); 
+    			}, 2000);
+				
+			return false;
+		});
+
+		$(".content").fadeIn(1000);
+	});
+	</script>
+	<footer>
+		<p>&copy; 2012 built with CodeIgniter 2.1.0 and Twitter Bootstrap 2.0.1</p>
+	</footer>
+</div><!-- /container -->
+</body>
+</html>

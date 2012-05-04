@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Your Contacts</title>
+<meta name="description" content="manage your contacts with name, email and phone">
+<meta name="author" content="yubi4dition">
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+	      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+<!-- Le styles -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/yourcontacts.css" rel="stylesheet" type="text/css" />
+<link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="css/tablesorter.css" rel="stylesheet" type="text/css" />
+<!-- Le fav and touch icons -->
+<link href="css/ico/favicon.ico" rel="shortcut icon" />
+</head>
+<body>
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="contacts.html"><img src="css/img/yourcontacts.png" width="57px"/></a>
+			<ul class="nav">
+				<li ><a href="add.html">Add</a></li>
+				<li ><a href="delete.html">Delete</a></li>
+				<li ><a href="edit.html">Edit</a></li>
+			</ul>
+			<div class="pull-right">
+				<small class="navbar-text">User: <a href="profile.html">user1@mail.com</a> </small>
+				<a href="index.html" class="btn btn-primary"><i class="icon-road icon-white"></i> Logout</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="content" style="display:none">
+		<div class="page-header">
+			<h1>Your Contacts</h1>
+		</div>
+		<div class="row">
+			<div class="span9">
+				<table class="table table-striped table-bordered tablesorter" id="tcontacts">
+					<thead>
+						<tr>
+							<th><i class="icon-tags"></i> ID</th>
+							<th><i class="icon-user"></i> Name</th>
+							<th><i class="icon-envelope"></i> Email</th>
+							<th><i class="icon-headphones"></i> Phone</th>
+						</tr>
+					</thead>
+					<tbody>
+											<tr>
+							<td>47</td>
+							<td>contact1</td>
+							<td>contact1@mail.com</td>
+							<td>111111222222222</td>
+						</tr>
+												<tr>
+							<td>48</td>
+							<td>contact2</td>
+							<td>contact2@mail.com</td>
+							<td>222222222222222</td>
+						</tr>
+												<tr>
+							<td>49</td>
+							<td>contact3</td>
+							<td>contact3@mail.com</td>
+							<td>333333333333333</td>
+						</tr>
+												<tr>
+							<td>50</td>
+							<td>contact4</td>
+							<td>contact4@mail.com</td>
+							<td>444444444444444</td>
+						</tr>
+												<tr>
+							<td>64</td>
+							<td>contact5</td>
+							<td>contact5@mail.com</td>
+							<td>555555555555555</td>
+						</tr>
+												<tr>
+							<td>65</td>
+							<td>contact6</td>
+							<td>contact6@mail.com</td>
+							<td>666666666666666</td>
+						</tr>
+												<tr>
+							<td>66</td>
+							<td>contact7</td>
+							<td>contact7@mail.com</td>
+							<td>777777777777777</td>
+						</tr>
+												<tr>
+							<td>67</td>
+							<td>contact8</td>
+							<td>contact8@mail.com</td>
+							<td>888888888888888</td>
+						</tr>
+												<tr>
+							<td>68</td>
+							<td>contact9</td>
+							<td>contact9@mail.com</td>
+							<td>999999999999999</td>
+						</tr>
+												<tr>
+							<td>69</td>
+							<td>contact10</td>
+							<td>contact10@mail.com</td>
+							<td>101010101010101</td>
+						</tr>
+												<tr>
+							<td>70</td>
+							<td>contact11</td>
+							<td>contact11@mail.com</td>
+							<td>111111111111111</td>
+						</tr>
+												<tr>
+							<td>81</td>
+							<td>contact12</td>
+							<td>contact12@mail.com</td>
+							<td>12121212121212</td>
+						</tr>
+											</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.tablesorter.js"></script>
+	<script>
+	$(document).ready(function(){
+	
+		$("#tcontacts").tablesorter();
+	
+		$(".content").fadeIn(1000);
+	});
+	</script>
+	<footer>
+		<p>&copy; 2012 built with CodeIgniter 2.1.0 and Twitter Bootstrap 2.0.1</p>
+	</footer>
+</div><!-- /container -->
+</body>
+</html>

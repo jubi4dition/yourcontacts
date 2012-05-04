@@ -1,0 +1,41 @@
+/* Override some defaults */
+html,body {
+	background-color: #eee;
+}
+body {
+	overflow-y: scroll; /* force vertical scrollbar */
+}
+.container>footer p {
+	text-align: center; /* center align it with the container */
+}
+.container {
+	width: 820px; /* downsize our container*/
+}
+.content { /* The white background content wrapper */
+	background-color: #fff;
+	padding: 20px;
+	margin: 0 0px 15px;
+	border-radius: 0 0 6px 6px;
+	border: 1px solid #ddd;
+}
+.page-header { /* Page header tweaks */
+	background-color: #f5f5f5;
+	padding: 20px 20px 10px;
+	margin: -20px -20px 20px;
+	border-bottom: 1px solid #ddd;
+}
+.content {
+	min-height: 350px; /* minimum height for the content */
+}
+.navbar .btn {
+  	margin-top: 0; /* Centering button in navbar */
+}
+.btn {
+	font-weight: bold; /* All buttons bold */
+}
+.navbar .brand {
+	padding: 4px 20px 4px;	/* Smaller and centering Padding */ 
+}
+.navbar { 
+	margin-bottom: 0;
+}
