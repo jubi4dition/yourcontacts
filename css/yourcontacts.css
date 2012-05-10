@@ -39,3 +39,10 @@ body {
 .navbar { 
 	margin-bottom: 0;
 }
+.navbar .divider-vertical {
+	margin: 0;
+}
+.navbar .nav > li > a {
+	width: 50px;
+	text-align: center;
+}
