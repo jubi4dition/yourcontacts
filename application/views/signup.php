@@ -1,7 +1,7 @@
 <? $this->load->view('includes/header'); ?>
 <? $this->load->view('includes/nli_navbar'); ?>
 <div class="container">
-	<div class="content">
+	<div class="content" style="display:none">
 		<div class="page-header">
 			<h1>Sign Up</h1>
 		</div>
@@ -74,6 +74,8 @@
 				
 			return false;
 		});
+
+		$(".content").fadeIn(1000);
 	});
 	</script>
 <? $this->load->view('includes/footer'); ?>

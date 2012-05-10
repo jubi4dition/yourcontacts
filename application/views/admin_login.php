@@ -1,7 +1,7 @@
 <? $this->load->view('includes/header'); ?>
 <? $this->load->view('includes/nli_navbar'); ?>
 <div class="container">
-	<div class="content">
+	<div class="content" style="display:none">
 		<div class="page-header">
 			<h1>Admin Login</h1>
 		</div>
@@ -39,4 +39,10 @@
 		</div>
 		<? endif; ?>
 	</div>
+	<script src="<?=base_url('js/jquery.js')?>"></script>
+	<script>
+	$(document).ready(function() {
+		$(".content").fadeIn(1000);
+	});
+	</script>
 <? $this->load->view('includes/footer'); ?>

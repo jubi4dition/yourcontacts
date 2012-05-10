@@ -1,7 +1,7 @@
 <? $this->load->view('includes/header'); ?>
 <? $this->load->view('includes/nli_navbar'); ?>
 <div class="container">
-	<div class="content">
+	<div class="content" style="display:none">
 		<div class="page-header">
 			<h1>Login</h1>
 		</div>
@@ -41,6 +41,12 @@
 		</div>
 		<? endif; ?>
 	</div>
+	<script src="<?=base_url('js/jquery.js')?>"></script>
+	<script>
+	$(document).ready(function() {
+		$(".content").fadeIn(1000);
+	});
+	</script>
 	<footer>
 		<p>&copy; 2012 built with CodeIgniter 2.1.0 and Twitter Bootstrap 2.0.1</p>
 	</footer>
