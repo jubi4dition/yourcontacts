@@ -22,7 +22,7 @@ class Login extends CI_Controller
 			redirect('login/login_failed');
 		}
 		else{
-			$isuser = $this->contacts_model->is_user($this->input->post('email'),  $this->input->post('pwd'));
+			$isuser = $this->contacts_model->is_user($this->input->post('email'), $this->input->post('pwd'));
 			if($isuser)
 			{
 				$email = $this->input->post('email');

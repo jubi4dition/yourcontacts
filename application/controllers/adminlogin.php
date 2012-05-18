@@ -23,7 +23,7 @@ class Adminlogin extends CI_Controller
 		}
 		else{
 			$admin = $this->input->post('admin');
-			$is_admin = $this->contacts_model->is_admin($admin,  $this->input->post('pwd'));
+			$is_admin = $this->contacts_model->is_admin($admin, $this->input->post('pwd'));
 			if($is_admin)
 			{
 				$data = array(
