@@ -59,15 +59,6 @@ class Login extends CI_Controller
 		}
 	}
 	
-	/*private function is_logged_in()
-	{
-		$is_logged_in = $this->session->userdata('is_logged_in');
-		if(!isset($is_logged_in) || $is_logged_in != TRUE){
-			return FALSE;
-		}
-		return TRUE;
-	}*/
-	
 	private function is_logged_in()
 	{
 		return $this->session->userdata('is_logged_in');
