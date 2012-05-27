@@ -1,6 +1,6 @@
 /* Override some defaults */
 html,body {
-	background-color: #eee;
+	background-image: url("img/bgimg.png");
 }
 body {
 	overflow-y: scroll; /* force vertical scrollbar */
