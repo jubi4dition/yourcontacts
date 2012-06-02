@@ -3,6 +3,15 @@ YOUR CONTACTS
 
 This is the Changelog for Your Contacts.
 
+Version 2.0.1
+-------------
+
+Here are the changes for Version 2.0.1(2012/06/02)
+
+* navbar-divider
+* FadeIn for all sites
+* new background-image
+
 Version 2.0.0
 -------------
 
