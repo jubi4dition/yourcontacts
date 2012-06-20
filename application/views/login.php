@@ -48,7 +48,7 @@
 	});
 	</script>
 	<footer>
-		<p>&copy; 2012 built with CodeIgniter 2.1.0 and Twitter Bootstrap 2.0.1</p>
+		<p>&copy; 2012 built with CodeIgniter 2.1.0 and Twitter Bootstrap 2.0.4</p>
 	</footer>
 	<div class="pull-right">
 		<a href="<?=site_url('admin')?>" class="btn btn-danger" style="position:fixed; bottom:0;"><i class="icon-flag icon-white"></i> Admin</a>
