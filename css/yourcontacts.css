@@ -46,3 +46,14 @@ body {
 	width: 50px;
 	text-align: center;
 }
+.navbar .container {
+	width: 820px;
+}
+.input-prepend, .input-append {
+  	margin-bottom: 15px;
+}
+.input-prepend .add-on {
+  	margin-right: -5px;
+	color: #999;
+}
+
