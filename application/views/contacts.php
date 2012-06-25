@@ -13,7 +13,7 @@
 							<th><i class="icon-tags"></i> ID</th>
 							<th><i class="icon-user"></i> Name</th>
 							<th><i class="icon-envelope"></i> Email</th>
-							<th><i class="icon-headphones"></i> Phone</th>
+							<th><i class="icon-phone"></i> Phone</th>
 						</tr>
 					</thead>
 					<tbody>

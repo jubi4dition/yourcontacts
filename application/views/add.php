@@ -17,7 +17,7 @@
 						<input type="email" name="email" class="input-large" placeholder="Email" required maxlength="40" />
 					</div>
 					<div class="input-prepend">
-						<span class="add-on"><i class="icon-headphones"></i></span>
+						<span class="add-on"><i class="icon-phone"></i></span>
 						<input type="text" name="phone" class="input-large" placeholder="Phone" required maxlength="15" />
 					</div>
 					<button type="submit" class="btn btn-success btn-large" data-loading-text="Sending...">
