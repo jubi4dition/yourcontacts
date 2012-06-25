@@ -3,10 +3,20 @@ YOUR CONTACTS
 
 This is the Changelog for Your Contacts.
 
+Version 2.1.0
+-------------
+
+Here are the changes for Version 2.1.0 (2012/06/25)
+
+* Twitter-Bootstrap 2.0.4
+* jQuery 1.7.2
+* Font-Awesome 2.0.0
+* new phone icon
+
 Version 2.0.1
 -------------
 
-Here are the changes for Version 2.0.1(2012/06/02)
+Here are the changes for Version 2.0.1 (2012/06/02)
 
 * navbar-divider
 * FadeIn for all sites
@@ -15,7 +25,7 @@ Here are the changes for Version 2.0.1(2012/06/02)
 Version 2.0.0
 -------------
 
-Here are the changes for Version 2.0.0(2012/04/20)
+Here are the changes for Version 2.0.0 (2012/04/20)
 
 * New Signup-site
 * New Admin-site
@@ -26,7 +36,7 @@ Here are the changes for Version 2.0.0(2012/04/20)
 Version 1.4.0
 -------------
 
-Here are the changes for Version 1.4.0(2012/03/21)
+Here are the changes for Version 1.4.0 (2012/03/21)
 
 * Using Font-Awesome for improved font and icons
 * New Controller Login
@@ -35,7 +45,7 @@ Here are the changes for Version 1.4.0(2012/03/21)
 Version 1.3.0
 -------------
 
-Here are the changes for Version 1.3.0(2012/03/13)
+Here are the changes for Version 1.3.0 (2012/03/13)
 
 * Using prepended input with icons for new style
 * New Logo in navbar
@@ -44,7 +54,7 @@ Here are the changes for Version 1.3.0(2012/03/13)
 Version 1.2.2
 -------------
 
-Here are the changes for Version 1.2.2(2012/03/12)
+Here are the changes for Version 1.2.2 (2012/03/12)
 
 * Adding of new site.php which solves the problems with new password-naming
 
