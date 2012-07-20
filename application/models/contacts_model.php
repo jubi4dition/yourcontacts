@@ -19,13 +19,7 @@ class Contacts_model extends CI_Model
 		$row = $this->db->get_where('users', array('email' => $email))->row();
 		return $row->uid;
 	}
-	
-	public function get_username($email)
-	{
-		$row = $this->db->get_where('members2', array('email' => $email))->row();
-		return $row->username;
-	}
-	
+
 	public function validate_password($uid, $password)
 	{
 		$query = $this->db->get_where('users', array('uid' => $uid, 'password' => md5($password)));
