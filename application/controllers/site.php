@@ -29,7 +29,7 @@ class Site extends CI_Controller
     {
         sleep(2);
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_name');
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_numeric');
         $this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
         $this->form_validation->set_rules('phone', 'Phone', 'required|max_length[15]|alpha_numeric');
         
@@ -73,7 +73,7 @@ class Site extends CI_Controller
     {
         sleep(2);
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_name');
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_numeric');
         
         if ($this->form_validation->run() == FALSE) {
             $json = json_encode(array(
@@ -115,7 +115,7 @@ class Site extends CI_Controller
     {
         sleep(2);
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_name');
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_numeric');
         $this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
         $this->form_validation->set_rules('phone', 'Phone', 'required|max_length[15]|alpha_numeric');
         
@@ -141,7 +141,7 @@ class Site extends CI_Controller
     public function get_contact_data()
     {
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_name');
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_numeric');
         if ($this->form_validation->run() == FALSE) {
             $json = json_encode(array(
                 'isSuccessful' => FALSE,
