@@ -1079,11 +1079,12 @@ class CI_Form_validation {
 	 *
 	 * @access	public
 	 * @param	string
+	 * @param	string "ipv4" or "ipv6" to validate a specific ip format
 	 * @return	string
 	 */
-	public function valid_ip($ip)
+	public function valid_ip($ip, $which = '')
 	{
-		return $this->CI->input->valid_ip($ip);
+		return $this->CI->input->valid_ip($ip, $which);
 	}
 
 	// --------------------------------------------------------------------
@@ -1098,20 +1099,6 @@ class CI_Form_validation {
 	public function alpha($str)
 	{
 		return ( ! preg_match("/^([a-z])+$/i", $str)) ? FALSE : TRUE;
-	}
-	
-// --------------------------------------------------------------------
-
-	/**
-	 * Alpha Name
-	 *
-	 * @access	public
-	 * @param	string
-	 * @return	bool
-	 */
-	public function alpha_name($str)
-	{
-		return ( ! preg_match("/^([-a-z0-9_-\s])+$/i", $str)) ? FALSE : TRUE;
 	}
 
 	// --------------------------------------------------------------------
