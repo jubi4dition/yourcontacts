@@ -9,7 +9,7 @@ body {
   text-align: center; /* center align it with the container */
 }
 .container {
-  width: 820px; /* downsize our container*/
+  /*width: 820px;*/ /* downsize our container*/
 }
 .content { /* The white background content wrapper */
   background-color: #fff;
@@ -47,7 +47,7 @@ body {
   text-align: center;
 }
 .navbar .container {
-  width: 820px;
+  /*width: 820px;*/
 }
 .input-prepend, .input-append {
   margin-bottom: 15px;
