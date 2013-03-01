@@ -8,14 +8,11 @@
   <div class="row">
     <div class="span4">
       <form id="formDelete" class="well" accept-charset="utf-8">
-        <div class="input-prepend">
-          <span class="add-on"><i class="icon-user"></i></span>
-          <select id="formSelect" name="name" class="input-large">
+          <select id="formSelect" name="name" class="input-block-level">
           <? foreach($contacts as $contact): ?>
             <option value="<?=$contact['name']; ?>"><?=$contact['name'];?></option>
           <? endforeach;?>
           </select>
-        </div>
         <button type="submit" class="btn btn-danger btn-large" data-loading-text="Sending...">
         <i class="icon-trash icon-white"></i> Delete Contact</button>
       </form>

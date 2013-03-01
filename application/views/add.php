@@ -8,18 +8,9 @@
   <div class="row">
     <div class="span4">
       <form id="formAdd" class="well" accept-charset="utf-8">
-        <div class="input-prepend">
-          <span class="add-on"><i class="icon-user"></i></span>
-          <input type="text" name="name" class="input-large" placeholder="Username" required maxlength="40" autofocus />
-        </div>
-        <div class="input-prepend">
-          <span class="add-on"><i class="icon-envelope"></i></span>
-          <input type="email" name="email" class="input-large" placeholder="Email" required maxlength="40" />
-        </div>
-        <div class="input-prepend">
-          <span class="add-on"><i class="icon-phone"></i></span>
-          <input type="text" name="phone" class="input-large" placeholder="Phone" required maxlength="15" />
-        </div>
+        <input type="text" name="name" class="input-block-level" placeholder="Name" required maxlength="40" autofocus />
+        <input type="email" name="email" class="input-block-level" placeholder="Email" required maxlength="40" />
+        <input type="text" name="phone" class="input-block-level" placeholder="Phone" required maxlength="15" />
         <button type="submit" class="btn btn-success btn-large" data-loading-text="Sending...">
         <i class="icon-file icon-white"></i> Add Contact</button>
       </form>

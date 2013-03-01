@@ -6,7 +6,7 @@
     <h1>Your Contacts</h1>
   </div>
   <div class="row">
-    <div class="span9">
+    <div class="span9 offset1">
       <table class="table table-striped table-bordered tablesorter" id="tcontacts">
         <thead>
           <tr>
