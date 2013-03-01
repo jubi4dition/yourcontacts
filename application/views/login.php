@@ -8,15 +8,9 @@
   <div class="row">
     <div class="span4">
       <form class="well" action="<?=site_url('login/check_login')?>" method="post" accept-charset="utf-8">
-        <div class="input-prepend">
-          <span class="add-on"><i class="icon-envelope"></i></span>
-          <input type="text" class="input-large" name="email" placeholder="Email" required maxlength="40" autofocus />
-        </div>
-        <div class="input-prepend">
-          <span class="add-on"><i class="icon-lock"></i></span>
-          <input type="password" class="input-large" name="pwd" placeholder="Password" required maxlength="20" />
-        </div>
-        <button type="submit" class="btn btn-primary btn-large">
+        <input type="text" class="input-block-level" name="email" placeholder="Email" required maxlength="40" autofocus />
+        <input type="password" class="input-block-level" name="pwd" placeholder="Password" required maxlength="20" />
+        <button type="submit" class="btn btn-primary btn-block">
         <i class="icon-home icon-white"></i> Login</button>
       </form>
     </div>
