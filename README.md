@@ -14,6 +14,7 @@ Usage
 Using Your Contacts requires the following steps.
 
 * Copy the yourcontacts folder to your webroot
+* If you are not using PHP 5.4, then you have to activate the short_open_tag in the php.ini
 * Import yourcontacts.sql to your database
 * Edit application/config/database.php (password)
 * Open the site in a browser
