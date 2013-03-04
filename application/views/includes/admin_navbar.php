@@ -1,14 +1,14 @@
-<div class="navbar">
+<div class="navbar navbar-static-top">
   <div class="navbar-inner">
     <div class="container">
       <a class="brand" href="<?=site_url('admin'); ?>"><img src="<?=base_url('css/img/yourcontacts.png'); ?>" width="57px"/></a>
       <ul class="nav">
         <li class="divider-vertical"></li>
-        <li <? if ($active == "add") echo "class=\"active\""; ?>><?=anchor('admin/add', 'Add'); ?></li>
+        <li><?=anchor('admin/add', 'Add'); ?></li>
         <li class="divider-vertical"></li>
-        <li <? if ($active == "delete") echo "class=\"active\""; ?>><?=anchor('admin/delete', 'Delete'); ?></li>
+        <li><?=anchor('admin/delete', 'Delete'); ?></li>
         <li class="divider-vertical"></li>
-        <li <? if ($active == "edit") echo "class=\"active\""; ?>><?=anchor('admin/edit', 'Edit'); ?></li>
+        <li><?=anchor('admin/edit', 'Edit'); ?></li>
         <li class="divider-vertical"></li>
       </ul>
       <div class="pull-right">
