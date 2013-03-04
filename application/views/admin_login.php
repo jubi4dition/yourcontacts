@@ -8,7 +8,7 @@
   <div class="row">
     <div class="span4">
       <form class="well" action="<?=site_url('adminlogin/check_login')?>" method="post" accept-charset="utf-8">
-        <input type="text" class="input-block-level" name="admin" placeholder="Name" required maxlength="40" autofocus />
+        <input type="text" class="input-block-level" name="admin" value="Name" placeholder="Name" required maxlength="40" autofocus />
         <input type="password" class="input-block-level" name="pwd" placeholder="Password" required maxlength="20" />
         <button type="submit" class="btn btn-primary btn-block">
         <i class="icon-home icon-white"></i> Login</button>

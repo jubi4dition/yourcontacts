@@ -8,7 +8,7 @@
   <div class="row">
     <div class="span4">
       <form id="formAdd" class="well" accept-charset="utf-8">
-        <input type="text" class="input-block-level" name="email" placeholder="Email" required maxlength="40" autofocus />
+        <input type="text" class="input-block-level" name="email" placeholder="Email" required maxlength="40" value="Email" autofocus />
         <input type="password" class="input-block-level" name="pwd" placeholder="Password" required maxlength="20" />
         <button type="submit" class="btn btn-success btn-large" data-loading-text="Sending...">
         <i class="icon-file icon-white"></i> Add User</button>

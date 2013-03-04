@@ -8,7 +8,7 @@
   <div class="row">
     <div class="span4">
       <form id="formPassword" class="well" accept-charset="utf-8">
-        <input type="text" name="curpwd" class="input-block-level" placeholder="Current Password" required maxlength="20" autofocus />
+        <input type="text" name="curpwd" class="input-block-level" value="Current Password" placeholder="Current Password" required maxlength="20" autofocus />
         <input type="text" name="newpwd" class="input-block-level" placeholder="New Password" required maxlength="20" />
         <button type="submit" class="btn btn-danger btn-large" data-loading-text="Sending...">
         <i class="icon-refresh icon-white"></i> Change Password</button>
