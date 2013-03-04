@@ -1,5 +1,5 @@
 <? $this->load->view('includes/header'); ?>
-<? $this->load->view('includes/navbar', array('active' => "edit")); ?>
+<? $this->load->view('includes/navbar'); ?>
 <div class="container">
 <div class="content" style="display:none">
   <div class="page-header">
@@ -80,6 +80,8 @@ $(document).ready(function() {
             }
         });
     });
+
+    $('#nav-edit').addClass('active');
 
     $('.content').fadeIn(1000);
 });

@@ -1,5 +1,5 @@
 <? $this->load->view('includes/header'); ?>
-<? $this->load->view('includes/navbar', array('active' => "no")); ?>
+<? $this->load->view('includes/navbar'); ?>
 <div class="container">
 <div class="content" style="display:none">
   <div class="page-header">

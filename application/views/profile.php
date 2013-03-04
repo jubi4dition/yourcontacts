@@ -1,9 +1,9 @@
 <? $this->load->view('includes/header'); ?>
-<? $this->load->view('includes/navbar', array('active' => "no")); ?>
+<? $this->load->view('includes/navbar'); ?>
 <div class="container">
 <div class="content" style="display: none">
   <div class="page-header">
-    <h1>Change Your Password</h1>
+    <h2>Change Your Password</h2>
   </div>
   <div class="row">
     <div class="span4">

@@ -4,11 +4,11 @@
       <a class="brand" href="<?=site_url('site')?>"><img src="<?=base_url('css/img/yourcontacts.png'); ?>" width="57px"/></a>
       <ul class="nav">
         <li class="divider-vertical"></li>
-        <li <? if( $active == "add") echo "class=\"active\""; ?>><?=anchor('site/add', 'Add'); ?></li>
+        <li id="nav-add"><?=anchor('site/add', 'Add'); ?></li>
         <li class="divider-vertical"></li>
-        <li <? if ($active == "delete") echo "class=\"active\""; ?>><?=anchor('site/delete', 'Delete'); ?></li>
+        <li id="nav-delete"><?=anchor('site/delete', 'Delete'); ?></li>
         <li class="divider-vertical"></li>
-        <li <? if ($active == "edit") echo "class=\"active\""; ?>><?=anchor('site/edit', 'Edit'); ?></li>
+        <li id="nav-edit"><?=anchor('site/edit', 'Edit'); ?></li>
         <li class="divider-vertical"></li>
       </ul>
       <div class="pull-right">
