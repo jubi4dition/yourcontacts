@@ -62,6 +62,8 @@ $(document).ready(function() {
     return false;
   });
 
+  $('#nav-edit').addClass('active');
+
   $(".content").fadeIn(1000);
 });
 </script>

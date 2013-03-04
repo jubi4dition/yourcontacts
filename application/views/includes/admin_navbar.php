@@ -4,11 +4,11 @@
       <a class="brand" href="<?=site_url('admin'); ?>"><img src="<?=base_url('css/img/yourcontacts.png'); ?>" width="57px"/></a>
       <ul class="nav">
         <li class="divider-vertical"></li>
-        <li><?=anchor('admin/add', 'Add'); ?></li>
+        <li id="nav-add"><?=anchor('admin/add', 'Add'); ?></li>
         <li class="divider-vertical"></li>
-        <li><?=anchor('admin/delete', 'Delete'); ?></li>
+        <li id="nav-delete"><?=anchor('admin/delete', 'Delete'); ?></li>
         <li class="divider-vertical"></li>
-        <li><?=anchor('admin/edit', 'Edit'); ?></li>
+        <li id="nav-edit"><?=anchor('admin/edit', 'Edit'); ?></li>
         <li class="divider-vertical"></li>
       </ul>
       <div class="pull-right">

@@ -57,6 +57,8 @@ $(document).ready(function() {
     return false;
   });
 
+  $('#nav-add').addClass('active');
+
   $(".content").fadeIn(1000);
 });
 </script>
