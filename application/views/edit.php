@@ -3,7 +3,7 @@
 <div class="container">
 <div class="content" style="display:none">
   <div class="page-header">
-    <h1>Edit A Contact</h1>
+    <h2>Edit A Contact</h2>
   </div>
   <div class="row">
     <div class="span4">
@@ -15,7 +15,7 @@
         </select>
         <input type="email" name="email" class="input-block-level" placeholder="Email" required maxlength="40" value="<?=$firstcontact['email']?>">
         <input type="text" name="phone" class="input-block-level" placeholder="Phone" required maxlength="15" value="<?=$firstcontact['phone']?>">
-        <button type="submit" class="btn btn-warning btn-large" data-loading-text="Sending...">
+        <button type="submit" class="btn btn-warning btn-large">
         <i class="icon-pencil icon-white"></i> Edit Contact</button>
       </form>
     </div>
@@ -32,58 +32,62 @@
   </div>
 </div>
 <script src="<?=base_url('js/jquery.js'); ?>"></script>
-<script src="<?=base_url('js/bootstrap-button.js'); ?>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
   
-    $('#formEdit').submit(function(){
-    
-        $('#formEdit button').button('loading');
-        $('#success').hide();
-        $('#error').hide();
-    
-        var faction = "<?=site_url('site/edit_contact'); ?>";
-        var fdata = $('#formEdit').serialize();
+  $('#formEdit').submit(function(){
 
-        $.post(faction, fdata, function(rdata) {
-            var json = $.parseJSON(rdata);
-            if (json.isSuccessful) {
-                $('#successMessage').html(json.message);
-                $('#success').show();
-            } else {
-                $('#errorMessage').html(json.message);
-                $('#error').show();
-            }
-          
-            $('#formEdit button').button('reset');
-        });
+    var form = $(this);
+    form.children('button').prop('disabled', true);
+    $('#success').hide();
+    $('#error').hide();
+
+    var faction = "<?=site_url('site/edit_contact'); ?>";
+    var fdata = form.serialize();
+
+    $.post(faction, fdata, function(rdata) {
+        
+        var json = $.parseJSON(rdata);
+        
+        if (json.isSuccessful) {
+            $('#successMessage').html(json.message);
+            $('#success').show();
+        } else {
+            $('#errorMessage').html(json.message);
+            $('#error').show();
+        }
       
-        return false;
+        form.children('button').prop('disabled', false);
     });
+  
+    return false;
+  });
 
-    $('#formSelect').change(function() {
+  $('#formSelect').change(function() {
 
-        $('#success').hide();
-        $('#error').hide();
+    $('#success').hide();
+    $('#error').hide();
 
-        var faction = "<?=site_url('site/get_contact_data'); ?>";
-        var fdata = $('#formSelect').serialize();
+    var faction = "<?=site_url('site/get_contact_data'); ?>";
+    var fdata = $('#formSelect').serialize();
 
-        $.post(faction, fdata, function(rdata){
-            var json = $.parseJSON(rdata);
-            if(json.isSuccessful){
-                $('#formEdit input[name="email"]').val(json.email);
-                $('#formEdit input[name="phone"]').val(json.phone);
-            } else {
-                $('#errorMessage').html(json.message);
-                $('#error').show();
-            }
-        });
+    $.post(faction, fdata, function(rdata) {
+        
+        var json = $.parseJSON(rdata);
+        
+        if(json.isSuccessful) {
+            $('#formEdit input[name="email"]').val(json.email);
+            $('#formEdit input[name="phone"]').val(json.phone);
+        } else {
+            $('#errorMessage').html(json.message);
+            $('#error').show();
+        }
     });
+  });
 
-    $('#nav-edit').addClass('active');
+  $('#nav-edit').addClass('active');
 
-    $('.content').fadeIn(1000);
+  $('.content').fadeIn(1000);
 });
 </script>
 <? $this->load->view('includes/footer'); ?>
