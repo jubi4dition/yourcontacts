@@ -11,7 +11,7 @@
         <input type="text" name="name" class="input-block-level" placeholder="Name" required maxlength="40" autofocus />
         <input type="email" name="email" class="input-block-level" placeholder="Email" required maxlength="40" />
         <input type="text" name="phone" class="input-block-level" placeholder="Phone" required maxlength="15" />
-        <button type="submit" class="btn btn-success btn-large" data-loading-text="Sending...">
+        <button type="submit" class="btn btn-success btn-large">
         <i class="icon-file icon-white"></i> Add Contact</button>
       </form>
     </div>
@@ -27,35 +27,35 @@
     </div>
   </div>
 </div>
-  <script src="<?=base_url('js/jquery.js')?>"></script>
-  <script src="<?=base_url('js/bootstrap-button.js')?>"></script>
+<script src="<?=base_url('js/jquery.js'); ?>"></script>
 <script>
 $(document).ready(function() {
 
-    $('#formAdd').submit(function(){
+    $('#formAdd').submit(function() {
 
-        $('#formAdd button').button('loading');
-        $('#success').hide();
-        $('#error').hide();
+      var form = $(this);
+      form.children('button').prop('disabled', true);
+      $('#success').hide();
+      $('#error').hide();
 
-        var faction = '<?=site_url('site/add_contact')?>';
-        var fdata = $('#formAdd').serialize();
+      var faction = '<?=site_url('site/add_contact'); ?>';
+      var fdata = form.serialize();
 
-        $.post(faction, fdata, function(rdata){
-            var json = jQuery.parseJSON(rdata);
-            if (json.isSuccessful) {
-                $('#successMessage').html(json.message);
-                $('#success').show();
-            } else {
-                $('#errorMessage').html(json.message);
-                $('#error').show();
-            }
+      $.post(faction, fdata, function(rdata) {
+          var json = jQuery.parseJSON(rdata);
+          if (json.isSuccessful) {
+              $('#successMessage').html(json.message);
+              $('#success').show();
+          } else {
+              $('#errorMessage').html(json.message);
+              $('#error').show();
+          }
 
-            $('#formAdd button').button('reset');
-            $('#formAdd input[name="name"]').select();
-        });
+          form.children('button').prop('disabled', false);
+          form.children('input[name="name"]').select();
+      });
 
-        return false;
+      return false;
     });
 
     $('#nav-add').addClass('active');
