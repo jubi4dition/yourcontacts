@@ -3,7 +3,7 @@
 <div class="container">
 <div class="content" style="display:none">
   <div class="page-header">
-    <h1>Your Contacts</h1>
+    <h2>Your Contacts</h2>
   </div>
   <div class="row">
     <div class="span9 offset1">
@@ -24,7 +24,7 @@
             <td><?=$contacts[$i]['email']; ?></td>
             <td><?=$contacts[$i]['phone']; ?></td>
           </tr>
-          <? endfor;?>
+          <? endfor; ?>
         </tbody>
       </table>
     </div>
@@ -33,11 +33,11 @@
 <script src="<?=base_url('js/jquery.js'); ?>"></script>
 <script src="<?=base_url('js/jquery.tablesorter.js'); ?>"></script>
 <script>
-  $(document).ready(function() {
+$(document).ready(function() {
 
-    $('#tcontacts').tablesorter();
+  $('#tcontacts').tablesorter();
 
-    $('.content').fadeIn(1000);
-  });
+  $('.content').fadeIn(1000);
+});
 </script>
 <? $this->load->view('includes/footer'); ?>

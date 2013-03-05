@@ -3,12 +3,12 @@
 <div class="container">
 <div class="content" style="display:none">
   <div class="page-header">
-    <h1>Add A Contact</h1>
+    <h2>Add A Contact</h2>
   </div>
   <div class="row">
     <div class="span4">
       <form id="formAdd" class="well" accept-charset="utf-8">
-        <input type="text" name="name" class="input-block-level" placeholder="Name" required maxlength="40" autofocus />
+        <input type="text" name="name" class="input-block-level" value="Name" placeholder="Name" required maxlength="40" autofocus />
         <input type="email" name="email" class="input-block-level" placeholder="Email" required maxlength="40" />
         <input type="text" name="phone" class="input-block-level" placeholder="Phone" required maxlength="15" />
         <button type="submit" class="btn btn-success btn-large">
