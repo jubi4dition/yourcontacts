@@ -7,7 +7,7 @@
   </div>
   <div class="row">
     <div class="span4">
-      <form class="well" action="<?=site_url('adminlogin/check_login')?>" method="post" accept-charset="utf-8">
+      <form class="well" action="<?=site_url('adminlogin/check_login'); ?>" method="post" accept-charset="utf-8">
         <input type="text" class="input-block-level" name="admin" value="Name" placeholder="Name" required maxlength="40" autofocus />
         <input type="password" class="input-block-level" name="pwd" placeholder="Password" required maxlength="20" />
         <button type="submit" class="btn btn-primary btn-block">
@@ -15,7 +15,7 @@
       </form>
     </div>
   </div>
-  <? if($message == TRUE): ?>
+  <? if (isset($error)): ?>
   <div class="row">
     <div class="span4">
       <div class="alert alert-error">
@@ -33,10 +33,10 @@
   </div>
   <? endif; ?>
 </div>
-<script src="<?=base_url('js/jquery.js')?>"></script>
+<script src="<?=base_url('js/jquery.js'); ?>"></script>
 <script>
 $(document).ready(function() {
-  $(".content").fadeIn(1000);
+  $('.content').fadeIn(1000);
 });
 </script>
 <? $this->load->view('includes/footer'); ?>

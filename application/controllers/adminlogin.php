@@ -5,7 +5,7 @@ class Adminlogin extends CI_Controller
     public function index()
     {
         if (!$this->is_logged_in()) {
-            $this->load->view('admin_login', array('message' => FALSE));
+            $this->load->view('admin_login');
         } else {
             redirect('admin');
         }
@@ -38,7 +38,7 @@ class Adminlogin extends CI_Controller
     
     public function login_failed()
     {
-        $this->load->view('admin_login', array('message' => TRUE));
+        $this->load->view('admin_login', array('error' => TRUE));
     }
     
     public function logout()
@@ -48,7 +48,7 @@ class Adminlogin extends CI_Controller
         } else {
             $this->session->set_userdata(array('is_admin' => FALSE));
             $this->session->sess_destroy();
-            $this->load->view('admin_login', array('message' => FALSE));
+            $this->load->view('admin_login');
         }
     }
     
