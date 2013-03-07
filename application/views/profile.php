@@ -8,9 +8,9 @@
   <div class="row">
     <div class="span4">
       <form id="formPassword" class="well" accept-charset="utf-8">
-        <input type="text" name="curpwd" class="input-block-level" placeholder="Current Password" required maxlength="20" autofocus />
+        <input type="text" name="curpwd" class="input-block-level" value="Current Password" placeholder="Current Password" required maxlength="20" autofocus />
         <input type="text" name="newpwd" class="input-block-level" placeholder="New Password" required maxlength="20" />
-        <button type="submit" class="btn btn-danger btn-large" data-loading-text="Sending...">
+        <button type="submit" class="btn btn-danger btn-large">
         <i class="icon-refresh icon-white"></i> Change Password</button>
       </form>
     </div>
@@ -27,40 +27,42 @@
   </div>
 </div>
 <script src="<?=base_url('js/jquery.js'); ?>"></script>
-<script src="<?=base_url('js/bootstrap-button.js'); ?>"></script>
 <script>
 $(document).ready(function() {
   
-    $('#formPassword').submit(function(){
-      
-        $('#formPassword button').button('loading');
-        $('#success').hide();
-        $('#error').hide();
-      
-        var faction = '<?=site_url('site/change_password'); ?>';
-        var fdata = $('#formPassword').serialize();
+  $('#formPassword').submit(function(){
+    
+    var form = $(this);
+    form.children('button').prop('disabled', true);
+    $('#success').hide();
+    $('#error').hide();
+  
+    var faction = '<?=site_url('site/change_password'); ?>';
+    var fdata = form.serialize();
 
-        $.post(faction, fdata, function(rdata){
+    $.post(faction, fdata, function(rdata) {
+
         var json = jQuery.parseJSON(rdata);
-            if (json.isSuccessful) {
-              $('#successMessage').html(json.message);
-              $('#success').show();
-              $('#formPassword input[name="curpwd"]').val('');
-              $('#formPassword input[name="newpwd"]').val('');
-              $('#formPassword input').blur();
-            } else {
-              $('#errorMessage').html(json.message);
-              $('#error').show();
-              $('#formPassword input[name="curpwd"]').select();
-            }
-            
-                $('#formPassword button').button('reset');
-          });
         
-        return false;
+        if (json.isSuccessful) {
+          $('#successMessage').html(json.message);
+          $('#success').show();
+          form.children('input[name="curpwd"]').val('');
+          form.children('input[name="newpwd"]').val('');
+          form.children('input').blur();
+        } else {
+          $('#errorMessage').html(json.message);
+          $('#error').show();
+          form.children('input[name="curpwd"]').select();
+        }
+        
+        form.children('button').prop('disabled', false);
     });
+    
+    return false;
+  });
 
-    $('.content').fadeIn(1000);
+  $('.content').fadeIn(1000);
 });
 </script>
 <? $this->load->view('includes/footer'); ?>
