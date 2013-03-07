@@ -15,7 +15,7 @@
           </option>
         <? endforeach; ?>
         </select>
-        <button type="submit" class="btn btn-danger btn-large" data-loading-text="Sending...">
+        <button type="submit" class="btn btn-danger btn-large">
         <i class="icon-trash icon-white"></i> Delete User</button>
       </form>
     </div>
@@ -32,31 +32,33 @@
   </div>
 </div>
 <script src="<?=base_url('js/jquery.js'); ?>"></script>
-<script src="<?=base_url('js/bootstrap-button.js'); ?>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
   
-  $("#formDelete").submit(function(){
+  $('#formDelete').submit(function() {
     
-    $("#formDelete button").button('loading');
-    $("#success").hide();
-    $("#error").hide();
+    var form = $(this);
+    form.children('button').prop('disabled', true);
+    $('#success').hide();
+    $('#error').hide();
     
-    var faction = "<?=site_url('admin/delete_user')?>";
-    var fdata = $("#formDelete").serialize();
+    var faction = "<?=site_url('admin/delete_user'); ?>";
+    var fdata = form.serialize();
 
-    $.post(faction, fdata, function(rdata){
-      var json = jQuery.parseJSON(rdata);
-      if (json.isSuccessful) {
-        $("#successMessage").html(json.message);
-        $("#success").show();
-        $("#formSelect option[value='"+ json.email + "']").remove();
-      } else {
-        $("#errorMessage").html(json.message);
-        $("#error").show();
-      }
+    $.post(faction, fdata, function(rdata) {
       
-      $("#formDelete button").button('reset');
+      var json = jQuery.parseJSON(rdata);
+      
+        if (json.isSuccessful) {
+            $('#successMessage').html(json.message);
+            $('#success').show();
+            $('#formSelect option[value="'+ json.email + '"]').remove();
+        } else {
+            $('#errorMessage').html(json.message);
+            $('#error').show();
+        }
+        
+        form.children('button').prop('disabled', false);
     });
       
     return false;
@@ -64,7 +66,7 @@ $(document).ready(function() {
 
   $('#nav-delete').addClass('active');
 
-  $(".content").fadeIn(1000);
+  $('.content').fadeIn(1000);
 });
 </script>
 <? $this->load->view('includes/footer'); ?>

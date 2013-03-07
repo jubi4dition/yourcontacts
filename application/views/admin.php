@@ -18,9 +18,9 @@
         <tbody>
         <? for($i = 0; $i < count($users); $i++): ?>
           <tr>
-            <td><?=$users[$i]['uid']?></td>
-            <td><?=$users[$i]['email']?></td>
-            <td><?=$users[$i]['contacts']?></td>
+            <td><?=$users[$i]['uid']; ?></td>
+            <td><?=$users[$i]['email']; ?></td>
+            <td><?=$users[$i]['contacts']; ?></td>
           </tr>
           <? endfor; ?>
         </tbody>
@@ -28,8 +28,8 @@
     </div>
   </div>
 </div>
-<script src="<?=base_url('js/jquery.js')?>"></script>
-<script src="<?=base_url('js/jquery.tablesorter.js')?>"></script>
+<script src="<?=base_url('js/jquery.js'); ?>"></script>
+<script src="<?=base_url('js/jquery.tablesorter.js'); ?>"></script>
 <script>
 $(document).ready(function(){
 

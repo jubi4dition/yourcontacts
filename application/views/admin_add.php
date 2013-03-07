@@ -8,9 +8,9 @@
   <div class="row">
     <div class="span4">
       <form id="formAdd" class="well" accept-charset="utf-8">
-        <input type="text" class="input-block-level" name="email" placeholder="Email" required maxlength="40" value="Email" autofocus />
+        <input type="email" class="input-block-level" name="email" value="Email" placeholder="Email" required maxlength="40" autofocus />
         <input type="password" class="input-block-level" name="pwd" placeholder="Password" required maxlength="20" />
-        <button type="submit" class="btn btn-success btn-large" data-loading-text="Sending...">
+        <button type="submit" class="btn btn-success btn-large">
         <i class="icon-file icon-white"></i> Add User</button>
       </form>
     </div>
@@ -27,31 +27,33 @@
   </div>
 </div>
 <script src="<?=base_url('js/jquery.js'); ?>"></script>
-<script src="<?=base_url('js/bootstrap-button.js'); ?>"></script>
 <script>
 $(document).ready(function() {
   
-  $("#formAdd").submit(function(){
+  $('#formAdd').submit(function() {
     
-    $("#formAdd button").button('loading');
-    $("#success").hide();
-    $("#error").hide();
+    var form = $(this);
+    form.children('button').prop('disabled', true);
+    $('#success').hide();
+    $('#error').hide();
     
-    var faction = "<?=site_url('admin/add_user')?>";
-    var fdata = $("#formAdd").serialize();
+    var faction = "<?=site_url('admin/add_user'); ?>";
+    var fdata = form.serialize();
     
-    $.post(faction, fdata, function(rdata){
-      var json = jQuery.parseJSON(rdata);
-      if (json.isSuccessful) {
-        $("#successMessage").html(json.message);
-        $("#success").show();
-      } else {
-        $("#errorMessage").html(json.message);
-        $("#error").show();
-      }
+    $.post(faction, fdata, function(rdata) {
       
-      $("#formAdd button").button('reset');
-      $("#formAdd input[name='email']").select();
+        var json = jQuery.parseJSON(rdata);
+        
+        if (json.isSuccessful) {
+            $('#successMessage').html(json.message);
+            $('#success').show();
+        } else {
+            $('#errorMessage').html(json.message);
+            $('#error').show();
+        }
+      
+        form.children('button').prop('disabled', false);
+        form.children('input[name="email"]').select();
     });
       
     return false;
@@ -59,7 +61,7 @@ $(document).ready(function() {
 
   $('#nav-add').addClass('active');
 
-  $(".content").fadeIn(1000);
+  $('.content').fadeIn(1000);
 });
 </script>
 <? $this->load->view('includes/footer'); ?>
