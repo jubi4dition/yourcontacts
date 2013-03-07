@@ -16,7 +16,7 @@
         <? endforeach; ?>
         </select>
         <input type="password" class="input-block-level" name="pwd" placeholder="Password" required maxlength="20" />
-        <button type="submit" class="btn btn-warning btn-large" data-loading-text="Sending...">
+        <button type="submit" class="btn btn-warning btn-large">
         <i class="icon-pencil icon-white"></i> Edit User</button>
       </form>
     </div>
@@ -33,30 +33,32 @@
   </div>
 </div>
 <script src="<?=base_url('js/jquery.js'); ?>"></script>
-<script src="<?=base_url('js/bootstrap-button.js'); ?>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
   
-  $("#formEdit").submit(function(){
+  $('#formEdit').submit(function() {
     
-    $("#formEdit button").button('loading');
-    $("#success").hide();
-    $("#error").hide();
+    var form = $(this);
+    form.children('button').prop('disabled', true);
+    $('#success').hide();
+    $('#error').hide();
     
-    var faction = "<?=site_url('admin/edit_user')?>";
-    var fdata = $("#formEdit").serialize();
+    var faction = "<?=site_url('admin/edit_user'); ?>";
+    var fdata = form.serialize();
 
-    $.post(faction, fdata, function(rdata){
-      var json = jQuery.parseJSON(rdata);
-      if (json.isSuccessful) {
-        $("#successMessage").html(json.message);
-        $("#success").show();
-      } else {
-        $("#errorMessage").html(json.message);
-        $("#error").show();
-      }
+    $.post(faction, fdata, function(rdata) {
       
-      $("#formEdit button").button('reset');
+        var json = jQuery.parseJSON(rdata);
+        
+        if (json.isSuccessful) {
+            $('#successMessage').html(json.message);
+            $('#success').show();
+        } else {
+            $('#errorMessage').html(json.message);
+            $('#error').show();
+        }
+        
+        form.children('button').prop('disabled', false);
     });
       
     return false;
@@ -64,7 +66,7 @@ $(document).ready(function() {
 
   $('#nav-edit').addClass('active');
 
-  $(".content").fadeIn(1000);
+  $('.content').fadeIn(1000);
 });
 </script>
 <? $this->load->view('includes/footer'); ?>
