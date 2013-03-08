@@ -15,7 +15,7 @@
       </form>
     </div>
   </div>
-  <? if($message == TRUE): ?>
+  <? if (isset($error)): ?>
   <div class="row">
     <div class="span4">
       <div class="alert alert-error">
@@ -29,11 +29,14 @@
       <div class="alert alert-info">
         <p><strong>You</strong> are not logged in!</p>
         <small>No Account? </small>
-        <a href="<?=site_url('signup')?>" class="btn btn-info"><i class="icon-arrow-right icon-white"></i> sign up now</a>
+        <a href="<?=site_url('signup'); ?>" class="btn btn-info"><i class="icon-arrow-right icon-white"></i> sign up now</a>
       </div>
     </div>
   </div>
   <? endif; ?>
+  <div class="row">
+    <a href="<?=site_url('admin'); ?>" class="btn btn-danger" style="position:fixed; bottom:0;"><i class="icon-flag icon-white"></i> Admin</a>
+  </div>
 </div>
 <script src="<?=base_url('js/jquery.js'); ?>"></script>
 <script>
@@ -44,9 +47,6 @@
 <footer>
   <p>&copy; 2012 built with CodeIgniter 2.1.3 and Twitter Bootstrap 2.3.0</p>
 </footer>
-<div class="pull-right">
-  <a href="<?=site_url('admin'); ?>" class="btn btn-danger" style="position:fixed; bottom:0;"><i class="icon-flag icon-white"></i> Admin</a>
-</div>
 </div><!-- /container -->
 </body>
 </html>

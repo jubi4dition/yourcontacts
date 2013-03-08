@@ -5,7 +5,7 @@ class Login extends CI_Controller
     public function index()
     {
         if (!$this->is_logged_in()) {
-            $this->load->view('login', array('message' => FALSE));
+            $this->load->view('login');
         } else {
             redirect('site');
         }
@@ -18,7 +18,7 @@ class Login extends CI_Controller
         $this->form_validation->set_rules('pwd', 'Password', 'required|max_length[20]|alpha_numeric');
 
         if ($this->form_validation->run() == FALSE) {
-            redirect('login/login_failed');
+            redirect('login/error');
         } else {
             $isuser = $this->contacts_model->is_user($this->input->post('email'), $this->input->post('pwd'));
             if ($isuser) {
@@ -33,14 +33,14 @@ class Login extends CI_Controller
                 $this->session->set_userdata($data);
                 redirect('site');
             } else {
-                redirect('login/login_failed');
+                redirect('login/error');
             }
         }
     }
     
-    public function login_failed()
+    public function error()
     {
-        $this->load->view('login', array('message' => TRUE));
+        $this->load->view('login', array('error' => TRUE));
     }
     
     public function logout()
@@ -50,7 +50,7 @@ class Login extends CI_Controller
         } else {
             $this->session->set_userdata(array('is_logged_in' => FALSE));
             $this->session->sess_destroy();
-            $this->load->view('login', array('message' => FALSE));
+            $this->load->view('login');
         }
     }
     
