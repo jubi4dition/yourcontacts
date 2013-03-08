@@ -18,7 +18,7 @@ class Adminlogin extends CI_Controller
         $this->form_validation->set_rules('pwd', 'Password', 'required|max_length[20]|alpha_numeric');
         
         if ($this->form_validation->run() == FALSE) {
-            redirect('login/login_failed');
+            redirect('login/error');
         } else {
             $admin = $this->input->post('admin');
             $is_admin = $this->contacts_model->is_admin($admin, $this->input->post('pwd'));
@@ -31,12 +31,12 @@ class Adminlogin extends CI_Controller
                 $this->session->set_userdata($data);
                 redirect('admin');
             } else {
-                redirect('adminlogin/login_failed');
+                redirect('adminlogin/error');
             }
         }
     }
     
-    public function login_failed()
+    public function error()
     {
         $this->load->view('admin_login', array('error' => TRUE));
     }
