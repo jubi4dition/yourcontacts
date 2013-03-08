@@ -7,7 +7,7 @@
   </div>
   <div class="row">
     <div class="span4">
-      <form class="well" action="<?=site_url('login/check_login')?>" method="post" accept-charset="utf-8">
+      <form class="well" action="<?=site_url('login/check'); ?>" method="post" accept-charset="utf-8">
         <input type="text" class="input-block-level" name="email" placeholder="Email" required maxlength="40" autofocus />
         <input type="password" class="input-block-level" name="pwd" placeholder="Password" required maxlength="20" />
         <button type="submit" class="btn btn-primary btn-block">
@@ -40,13 +40,8 @@
 </div>
 <script src="<?=base_url('js/jquery.js'); ?>"></script>
 <script>
-  $(document).ready(function() {
-    $('.content').fadeIn(1000);
-  });
+$(document).ready(function() {
+  $('.content').fadeIn(1000);
+});
 </script>
-<footer>
-  <p>&copy; 2012 built with CodeIgniter 2.1.3 and Twitter Bootstrap 2.3.0</p>
-</footer>
-</div><!-- /container -->
-</body>
-</html>
+<? $this->load->view('includes/footer'); ?>

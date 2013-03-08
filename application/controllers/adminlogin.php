@@ -11,7 +11,7 @@ class Adminlogin extends CI_Controller
         }
     }
     
-    public function check_login()
+    public function check()
     {           
         $this->load->library('form_validation');
         $this->form_validation->set_rules('admin', 'Admin', 'required|max_length[40]|alpha_numeric');
