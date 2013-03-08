@@ -13,7 +13,7 @@ class Site extends CI_Controller
     
     public function index()
     {
-        $contacts = $this->contacts->get_all($this->session->userdata('uid'));
+        $contacts = $this->contact_model->get_all($this->session->userdata('uid'));
         
         $this->load->view('contacts', array(
             'contacts' => $contacts, 
@@ -40,7 +40,7 @@ class Site extends CI_Controller
             ));
             echo $json;
         } else {
-            $is_added = $this->contacts->add($this->input->post('name'), $this->input->post('email'), 
+            $is_added = $this->contact_model->add($this->input->post('name'), $this->input->post('email'), 
                 $this->input->post('phone'), $this->session->userdata('uid'));
             
             if ($is_added) {
@@ -63,7 +63,7 @@ class Site extends CI_Controller
     
     public function delete()
     {
-        $contacts = $this->contacts->get_names($this->session->userdata('uid'));
+        $contacts = $this->contact_model->get_names($this->session->userdata('uid'));
         
         $this->load->view('delete', array(
             'contacts' => $contacts, 
@@ -84,7 +84,7 @@ class Site extends CI_Controller
             echo $json;
         } else {
             $name = $this->input->post('name');
-            $this->contacts->delete($name, $this->session->userdata('uid'));
+            $this->contact_model->delete($name, $this->session->userdata('uid'));
             
             $message = "<strong>".$name."</strong> has been deleted!";
             $json = json_encode(array(
@@ -98,10 +98,10 @@ class Site extends CI_Controller
     
     public function edit()
     {
-        $contacts = $this->contacts->get_names($this->session->userdata('uid'));
+        $contacts = $this->contact_model->get_names($this->session->userdata('uid'));
         
         if (count($contacts) > 0) {
-            $firstcontact = $this->contacts->get_data(
+            $firstcontact = $this->contact_model->get_data(
                 $this->session->userdata('uid'), $contacts[0]['name']);
         } else {
             $firstcontact = array('email' => '', 'phone' => '');
@@ -128,7 +128,7 @@ class Site extends CI_Controller
             ));
             echo $json;
         } else {
-            $this->contacts->update($this->input->post('name'), $this->input->post('email'),
+            $this->contact_model->update($this->input->post('name'), $this->input->post('email'),
                     $this->input->post('phone'), $this->session->userdata('uid'));
             
             $message = "Editing for <strong>".$this->input->post('name')."</strong> has been done!";
@@ -151,7 +151,7 @@ class Site extends CI_Controller
             ));
             echo $json;
         } else {
-            $contact = $this->contacts->get_data(
+            $contact = $this->contact_model->get_data(
                 $this->session->userdata('uid'), $this->input->post('name'));
             if (count($contact) == 0) {
                 $json = json_encode(array(
@@ -165,7 +165,6 @@ class Site extends CI_Controller
                     'email' => $contact['email'],
                     'phone' => $contact['phone']
                 ));
-                //echo $json;
             }
         }
     }
@@ -189,10 +188,11 @@ class Site extends CI_Controller
             ));
             echo $json;
         } else {
-            $pwd_valid = $this->contacts_model->validate_password(
+            $pwd_valid = $this->user_model->check_password(
                 $this->session->userdata('uid'), $this->input->post('curpwd'));
-            if ($pwd_valid) {   
-                $this->contacts_model->update_password(
+            
+            if ($pwd_valid) {
+                $this->user_model->update_password(
                     $this->session->userdata('uid'), $this->input->post('newpwd'));
 
                 $message = "<strong>Password</strong> has been changed!";
