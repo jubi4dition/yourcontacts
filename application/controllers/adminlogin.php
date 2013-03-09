@@ -21,7 +21,8 @@ class Adminlogin extends CI_Controller
             redirect('login/error');
         } else {
             $admin = $this->input->post('admin');
-            $is_admin = $this->contacts_model->is_admin($admin, $this->input->post('pwd'));
+            $is_admin = $this->admin_model->is($admin, $this->input->post('pwd'));
+            
             if ($is_admin) {
                 $data = array(
                     'is_logged_in' => FALSE,
@@ -29,6 +30,7 @@ class Adminlogin extends CI_Controller
                     'admin' => $admin
                 );
                 $this->session->set_userdata($data);
+                
                 redirect('admin');
             } else {
                 redirect('adminlogin/error');
