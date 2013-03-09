@@ -20,10 +20,12 @@ class Login extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             redirect('login/error');
         } else {
-            $isuser = $this->contacts_model->is_user($this->input->post('email'), $this->input->post('pwd'));
-            if ($isuser) {
+            $is_user = $this->user_model->is($this->input->post('email'), $this->input->post('pwd'));
+            
+            if ($is_user) {
                 $email = $this->input->post('email');
-                $uid = $this->contacts_model->get_uid($email);
+                $uid = $this->user_model->get_id($email);
+                
                 $data = array(
                     'email' => $email,
                     'uid' => $uid,
@@ -31,6 +33,7 @@ class Login extends CI_Controller
                     'is_admin' => FALSE
                 );
                 $this->session->set_userdata($data);
+                
                 redirect('site');
             } else {
                 redirect('login/error');
