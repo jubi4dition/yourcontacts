@@ -13,7 +13,7 @@ class Admin extends CI_Controller
     
     public function index()
     {
-        $users = $this->contacts_model->get_users();
+        $users = $this->user_model->get_all();
         
         $this->load->view('admin', array(
             'users' => $users
@@ -39,7 +39,8 @@ class Admin extends CI_Controller
             ));
             echo $json;
         } else {
-            $is_added = $this->contacts_model->add_user($this->input->post('email'), $this->input->post('pwd'));
+            $is_added = $this->user_model->add($this->input->post('email'), $this->input->post('pwd'));
+            
             if ($is_added) {
                 $message = "<strong>".$this->input->post('email')."</strong> has been added!";
                 $json = json_encode(array(
@@ -60,7 +61,7 @@ class Admin extends CI_Controller
     
     public function delete()
     {
-        $users = $this->contacts_model->get_users();
+        $users = $this->user_model->get_all();
         
         $this->load->view('admin_delete', array(
             'users' => $users 
@@ -81,7 +82,7 @@ class Admin extends CI_Controller
             echo $json;
         } else {
             $email = $this->input->post('email');
-            $this->contacts_model->delete_user($email);
+            $this->user_model->delete($email);
             
             $message = "<strong>".$email."</strong> has been deleted!";
             $json = json_encode(array(
@@ -95,7 +96,7 @@ class Admin extends CI_Controller
     
     public function edit()
     {
-        $users = $this->contacts_model->get_users();
+        $users = $this->user_model->get_all();
         
         $this->load->view('admin_edit', array(
             'users' => $users 
@@ -116,31 +117,12 @@ class Admin extends CI_Controller
             ));
             echo $json;
         } else {
-            $this->contacts_model->update_user($this->input->post('email'), $this->input->post('pwd'));
+            $this->user_model->update($this->input->post('email'), $this->input->post('pwd'));
             
             $message = "Editing for <strong>".$this->input->post('email')."</strong> has been done!";
             $json = json_encode(array(
                 'isSuccessful' => TRUE,
                 'message' => $message
-            ));
-            echo $json;
-        }
-    }
-    
-    public function get_contact_data()
-    {
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_name');
-        if ($this->form_validation->run() == FALSE) {
-            $this->index();
-        } else {
-            $contact = $this->contacts_model->get_contact_data(
-                    $this->session->userdata('uid'), $this->input->post('name'));
-            
-            $json = json_encode(array(
-                'name' => $contact['name'],
-                'email' => $contact['email'],
-                'phone' => $contact['phone']
             ));
             echo $json;
         }
