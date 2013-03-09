@@ -147,10 +147,11 @@ class Admin extends CI_Controller
             ));
             echo $json;
         } else {
-            $pwd_valid = $this->contacts_model->validate_admin_password(
-                            $this->session->userdata('admin'), $this->input->post('curpwd'));
+            $pwd_valid = $this->admin_model->check_password(
+                $this->session->userdata('admin'), $this->input->post('curpwd'));
+            
             if ($pwd_valid) {   
-                $this->contacts_model->update_admin_password(
+                $this->admin_model->update_password(
                     $this->session->userdata('admin'), $this->input->post('newpwd'));
             
                 $message = "<strong>Password</strong> has been changed!";
