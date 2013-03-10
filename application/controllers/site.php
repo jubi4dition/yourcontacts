@@ -34,29 +34,18 @@ class Site extends CI_Controller
         $this->form_validation->set_rules('phone', 'Phone', 'required|max_length[15]|alpha_numeric');
         
         if ($this->form_validation->run() == FALSE) {
-            $json = json_encode(array(
-                'isSuccessful' => FALSE,
-                'message' => "<strong>Adding</strong> failed!"
-            ));
-            echo $json;
+            $message = "<strong>Adding</strong> failed!";
+            $this->json_response(FALSE, $message);
         } else {
             $is_added = $this->contact_model->add($this->input->post('name'), $this->input->post('email'), 
                 $this->input->post('phone'), $this->session->userdata('uid'));
             
             if ($is_added) {
                 $message = "<strong>".$this->input->post('name')."</strong> has been added!";
-                $json = json_encode(array(
-                    'isSuccessful' => TRUE,
-                    'message' => $message
-                ));
-                echo $json;
+                $this->json_response(TRUE, $message);
             } else {
                 $message = "<strong>".$this->input->post('name')."</strong> already exists!";
-                $json = json_encode(array(
-                    'isSuccessful' => FALSE,
-                    'message' => $message
-                ));
-                echo $json;
+                $this->json_response(FALSE, $message);
             }
         }
     }
@@ -77,22 +66,18 @@ class Site extends CI_Controller
         $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_numeric');
         
         if ($this->form_validation->run() == FALSE) {
-            $json = json_encode(array(
-                'isSuccessful' => FALSE,
-                'message' => "<strong>Deletion</strong> failed!"
-            ));
-            echo $json;
+            $message = "<strong>Deletion</strong> failed!";
+            $this->json_response(FALSE, $message);
         } else {
             $name = $this->input->post('name');
             $this->contact_model->delete($name, $this->session->userdata('uid'));
             
             $message = "<strong>".$name."</strong> has been deleted!";
-            $json = json_encode(array(
+            echo json_encode(array(
                 'isSuccessful' => TRUE,
                 'message' => $message,
                 'name' => $name
             ));
-            echo $json;
         }
     }
     
@@ -122,21 +107,14 @@ class Site extends CI_Controller
         $this->form_validation->set_rules('phone', 'Phone', 'required|max_length[15]|alpha_numeric');
         
         if ($this->form_validation->run() == FALSE) {
-            $json = json_encode(array(
-                'isSuccessful' => FALSE,
-                'message' => "<strong>Editing</strong> failed!"
-            ));
-            echo $json;
+            $message = "<strong>Editing</strong> failed!";
+            $this->json_response(FALSE, $message);
         } else {
             $this->contact_model->update($this->input->post('name'), $this->input->post('email'),
                     $this->input->post('phone'), $this->session->userdata('uid'));
             
-            $message = "Editing for <strong>".$this->input->post('name')."</strong> has been done!";
-            $json = json_encode(array(
-                'isSuccessful' => TRUE,
-                'message' => $message
-            ));
-            echo $json;
+            $message = "Editing for <strong>".$this->input->post('name')."</strong> has been done!";       
+            $this->json_response(TRUE, $message);
         }
     }
     
@@ -144,21 +122,17 @@ class Site extends CI_Controller
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_numeric');
+
         if ($this->form_validation->run() == FALSE) {
-            $json = json_encode(array(
-                'isSuccessful' => FALSE,
-                'message' => "No <strong>Data</strong> for contact!"
-            ));
-            echo $json;
+            $message = "No <strong>Data</strong> for contact!";
+            $this->json_response(FALSE, $message);
         } else {
             $contact = $this->contact_model->get_data(
                 $this->session->userdata('uid'), $this->input->post('name'));
+            
             if (count($contact) == 0) {
-                $json = json_encode(array(
-                    'isSuccessful' => FALSE,
-                    'message' => "No <strong>Data</strong> for contact!"
-                ));
-                echo $json;
+                $message = "No <strong>Data</strong> for contact!";
+                $this->json_response(FALSE, $message);
             } else {
                 echo json_encode(array(
                     'isSuccessful' => TRUE,
@@ -182,11 +156,8 @@ class Site extends CI_Controller
         $this->form_validation->set_rules('newpwd', 'New Password', 'required|max_length[20]|alpha_numeric');
         
         if ($this->form_validation->run() == FALSE) {
-            $json = json_encode(array(
-                'isSuccessful' => FALSE,
-                'message' => "<strong>Changing</strong> failed!"
-            ));
-            echo $json;
+            $message = "<strong>Changing</strong> failed!";
+            $this->json_response(FALSE, $message);
         } else {
             $pwd_valid = $this->user_model->check_password(
                 $this->session->userdata('uid'), $this->input->post('curpwd'));
@@ -196,18 +167,10 @@ class Site extends CI_Controller
                     $this->session->userdata('uid'), $this->input->post('newpwd'));
 
                 $message = "<strong>Password</strong> has been changed!";
-                $json = json_encode(array(
-                    'isSuccessful' => TRUE,
-                    'message' => $message
-                ));
-                echo $json;
+                $this->json_response(TRUE, $message);
             } else {
                 $message = "<strong>Current Password</strong> is wrong!";
-                $json = json_encode(array(
-                    'isSuccessful' => FALSE,
-                    'message' => $message
-                ));
-                echo $json;
+                $this->json_response(FALSE, $message);
             }
         }
     }
@@ -215,6 +178,14 @@ class Site extends CI_Controller
     private function is_logged_in()
     {
         return $this->session->userdata('is_logged_in');
+    }
+
+    private function json_response($successful, $message)
+    {
+        echo json_encode(array(
+            'isSuccessful' => $successful,
+            'message' => $message
+        )); 
     }
 }
 /* End of file site.php */
