@@ -23,6 +23,16 @@ class User_model extends CI_Model
         return $row->uid;
     }
 
+    public function get_emails()
+    {
+        $users = $this->db->select('email')
+            ->order_by('email')
+            ->get('users')
+            ->result_array();
+
+        return $users;
+    }
+
     public function add($email, $password)
     {
         $query = $this->db->get_where('users', array('email' => $email));

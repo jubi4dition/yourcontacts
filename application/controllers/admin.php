@@ -61,10 +61,10 @@ class Admin extends CI_Controller
     
     public function delete()
     {
-        $users = $this->user_model->get_all();
+        $users = $this->user_model->get_emails();
         
         $this->load->view('admin_delete', array(
-            'users' => $users 
+            'users' => $users
         ));
     }
     
@@ -96,7 +96,7 @@ class Admin extends CI_Controller
     
     public function edit()
     {
-        $users = $this->user_model->get_all();
+        $users = $this->user_model->get_emails();
         
         $this->load->view('admin_edit', array(
             'users' => $users 

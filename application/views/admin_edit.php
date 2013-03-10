@@ -10,9 +10,7 @@
       <form id="formEdit" class="well" accept-charset="utf-8">
         <select id="formSelect" name="email" class="input-block-level">
         <? foreach($users as $user): ?>
-          <option value="<?=$user['email']; ?>">
-          <?=$user['email']; ?>
-          </option>
+          <option value="<?=$user['email']; ?>"><?=$user['email']; ?></option>
         <? endforeach; ?>
         </select>
         <input type="text" class="input-block-level" name="pwd" placeholder="Password" required maxlength="20" />
