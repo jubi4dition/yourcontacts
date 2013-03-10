@@ -15,7 +15,7 @@
           </option>
         <? endforeach; ?>
         </select>
-        <input type="password" class="input-block-level" name="pwd" placeholder="Password" required maxlength="20" />
+        <input type="text" class="input-block-level" name="pwd" placeholder="Password" required maxlength="20" />
         <button type="submit" class="btn btn-warning btn-large">
         <i class="icon-pencil icon-white"></i> Edit User</button>
       </form>
