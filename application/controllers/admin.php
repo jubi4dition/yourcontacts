@@ -33,28 +33,17 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('pwd', 'Password', 'required|max_length[20]|alpha_numeric');
         
         if ($this->form_validation->run() == FALSE) {
-            $json = json_encode(array(
-                'isSuccessful' => FALSE,
-                'message' => "<strong>Adding</strong> failed!"
-            ));
-            echo $json;
+            $message = "<strong>Adding</strong> failed!";
+            $this->json_response(FALSE, $message);
         } else {
             $is_added = $this->user_model->add($this->input->post('email'), $this->input->post('pwd'));
             
             if ($is_added) {
                 $message = "<strong>".$this->input->post('email')."</strong> has been added!";
-                $json = json_encode(array(
-                    'isSuccessful' => TRUE,
-                    'message' => $message
-                ));
-                echo $json;
+                $this->json_response(TRUE, $message);
             } else {
                 $message = "<strong>".$this->input->post('email')."</strong> already exists!";
-                $json = json_encode(array(
-                    'isSuccessful' => FALSE,
-                    'message' => $message
-                ));
-                echo $json;
+                $this->json_response(FALSE, $message);
             }
         }
     }
@@ -75,22 +64,18 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
         
         if ($this->form_validation->run() == FALSE) {
-            $json = json_encode(array(
-                'isSuccessful' => FALSE,
-                'message' => "<strong>Deletion</strong> failed!"
-            ));
-            echo $json;
+            $message = "<strong>Deletion</strong> failed!";
+            $this->json_response(FALSE, $message);
         } else {
             $email = $this->input->post('email');
             $this->user_model->delete($email);
             
             $message = "<strong>".$email."</strong> has been deleted!";
-            $json = json_encode(array(
+            echo json_encode(array(
                 'isSuccessful' => TRUE,
                 'message' => $message,
                 'email' => $email
             ));
-            echo $json;
         }
     }
     
@@ -111,20 +96,13 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('pwd', 'Password', 'required|max_length[20]|alpha_numeric');
         
         if ($this->form_validation->run() == FALSE) {
-            $json = json_encode(array(
-                'isSuccessful' => FALSE,
-                'message' => "<strong>Editing</strong> failed!"
-            ));
-            echo $json;
+            $message = "<strong>Editing</strong> failed!";
+            $this->json_response(FALSE, $message);
         } else {
             $this->user_model->update($this->input->post('email'), $this->input->post('pwd'));
             
             $message = "Editing for <strong>".$this->input->post('email')."</strong> has been done!";
-            $json = json_encode(array(
-                'isSuccessful' => TRUE,
-                'message' => $message
-            ));
-            echo $json;
+            $this->json_response(TRUE, $message);
         }
     }
     
@@ -141,11 +119,8 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('newpwd', 'New Password', 'required|max_length[20]|alpha_numeric');
         
         if ($this->form_validation->run() == FALSE) {
-            $json = json_encode(array(
-                'isSuccessful' => FALSE,
-                'message' => "<strong>Changing</strong> failed!"
-            ));
-            echo $json;
+            $message = "<strong>Changing</strong> failed!";
+            $this->json_response(FALSE, $message);
         } else {
             $pwd_valid = $this->admin_model->check_password(
                 $this->session->userdata('admin'), $this->input->post('curpwd'));
@@ -155,18 +130,10 @@ class Admin extends CI_Controller
                     $this->session->userdata('admin'), $this->input->post('newpwd'));
             
                 $message = "<strong>Password</strong> has been changed!";
-                $json = json_encode(array(
-                    'isSuccessful' => TRUE,
-                    'message' => $message
-                ));
-                echo $json;
+                $this->json_response(TRUE, $message);
             } else {
                 $message = "<strong>Current Password</strong> is wrong!";
-                $json = json_encode(array(
-                    'isSuccessful' => FALSE,
-                    'message' => $message
-                ));
-                echo $json;
+                $this->json_response(FALSE, $message);
             }
         }
     }
@@ -174,6 +141,14 @@ class Admin extends CI_Controller
     private function is_logged_in()
     {
         return $this->session->userdata('is_admin');
+    }
+
+    private function json_response($successful, $message)
+    {
+        echo json_encode(array(
+            'isSuccessful' => $successful,
+            'message' => $message
+        )); 
     }
 }
 /* End of file admin.php */
