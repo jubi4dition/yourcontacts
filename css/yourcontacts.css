@@ -8,9 +8,6 @@ body {
 .container>footer p {
   text-align: center; /* center align it with the container */
 }
-.container {
-  /*width: 820px;*/ /* downsize our container*/
-}
 .content { /* The white background content wrapper */
   background-color: #fff;
   padding: 20px;
@@ -43,15 +40,9 @@ body {
   margin: 0;
 }
 .navbar .nav > li > a {
-  width: 50px;
+  width: 75px;
   text-align: center;
 }
-.navbar .container {
-  /*width: 820px;*/
-}
-.input-prepend, .input-append {
-  margin-bottom: 15px;
-}
-.input-prepend .add-on {
-  color: #999;
+.navbar .brand img{
+  width: 57px;
 }

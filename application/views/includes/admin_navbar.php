@@ -1,7 +1,7 @@
 <div class="navbar navbar-static-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="<?=site_url('admin'); ?>"><img src="<?=base_url('css/img/yourcontacts.png'); ?>" width="57px"/></a>
+      <a class="brand" href="<?=site_url('admin'); ?>"><img src="<?=base_url('css/img/yourcontacts.png'); ?>"></a>
       <ul class="nav">
         <li class="divider-vertical"></li>
         <li id="nav-add"><?=anchor('admin/add', 'Add'); ?></li>
