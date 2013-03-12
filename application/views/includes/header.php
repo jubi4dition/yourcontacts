@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Contacts</title>
+  <title>YourContacts</title>
   <meta name="description" content="manage your contacts with name, email and phone">
   <meta name="author" content="yubi4dition">
   <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
