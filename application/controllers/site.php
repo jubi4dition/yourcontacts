@@ -29,7 +29,7 @@ class Site extends CI_Controller
     {
         sleep(2);
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_numeric');
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|callback_alpha_dash_space');
         $this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
         $this->form_validation->set_rules('phone', 'Phone', 'required|max_length[15]|alpha_numeric');
         
@@ -102,7 +102,7 @@ class Site extends CI_Controller
     {
         sleep(2);
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_numeric');
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|callback_alpha_dash_space');
         $this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
         $this->form_validation->set_rules('phone', 'Phone', 'required|max_length[15]|alpha_numeric');
         
@@ -111,9 +111,9 @@ class Site extends CI_Controller
             $this->json_response(FALSE, $message);
         } else {
             $this->contact_model->update($this->input->post('name'), $this->input->post('email'),
-                    $this->input->post('phone'), $this->session->userdata('uid'));
+                $this->input->post('phone'), $this->session->userdata('uid'));
             
-            $message = "Editing for <strong>".$this->input->post('name')."</strong> has been done!";       
+            $message = "<strong>".$this->input->post('name')."</strong> has been edited!";      
             $this->json_response(TRUE, $message);
         }
     }
@@ -121,7 +121,7 @@ class Site extends CI_Controller
     public function get_contact_data()
     {
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_numeric');
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|callback_alpha_dash_space');
 
         if ($this->form_validation->run() == FALSE) {
             $message = "No <strong>Data</strong> for contact!";
@@ -186,6 +186,11 @@ class Site extends CI_Controller
             'isSuccessful' => $successful,
             'message' => $message
         )); 
+    }
+
+    public function alpha_dash_space($str)
+    {
+        return ( ! preg_match("/^([-a-z0-9_ ])+$/i", $str)) ? FALSE : TRUE;
     }
 }
 /* End of file site.php */
