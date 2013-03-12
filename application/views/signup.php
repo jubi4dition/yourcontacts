@@ -13,7 +13,7 @@
         <input type="password" class="input-block-level" name="pwd" placeholder="Your Password" required maxlength="20" />
         <input type="password" class="input-block-level" name="pwd2" placeholder="Repeat Password" required maxlength="20" />
         <button type="submit" class="btn btn-primary btn-large">
-        <i class="icon-book icon-white"></i> Sign Up</button>
+        <i class="icon-bell icon-white"></i> Sign Up</button>
       </form>
     </div>
   </div>

@@ -12,7 +12,7 @@
           <tr>
             <th><i class="icon-tags"></i> ID</th>
             <th><i class="icon-envelope"></i> Email</th>
-            <th><i class="icon-list-alt"></i> Contacts</th>
+            <th><i class="icon-list"></i> Contacts</th>
           </tr>
         </thead>
         <tbody>

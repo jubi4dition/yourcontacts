@@ -11,7 +11,7 @@
         <input type="email" class="input-block-level" name="email" value="Email" placeholder="Email" required maxlength="40" autofocus />
         <input type="text" class="input-block-level" name="pwd" placeholder="Password" required maxlength="20" />
         <button type="submit" class="btn btn-success btn-large">
-        <i class="icon-file icon-white"></i> Add User</button>
+        <i class="icon-plus icon-white"></i> Add User</button>
       </form>
     </div>
   </div>

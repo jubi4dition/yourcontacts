@@ -12,7 +12,7 @@
         <input type="email" name="email" class="input-block-level" placeholder="Email" required maxlength="40" />
         <input type="text" name="phone" class="input-block-level" placeholder="Phone" required maxlength="15" />
         <button type="submit" class="btn btn-success btn-large">
-        <i class="icon-file icon-white"></i> Add Contact</button>
+        <i class="icon-plus icon-white"></i> Add Contact</button>
       </form>
     </div>
   </div>
