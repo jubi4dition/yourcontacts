@@ -3,7 +3,7 @@
 <div class="container">
 <div class="content" style="display:none">
   <div class="page-header">
-    <h1>Login</h1>
+    <h2>Login</h2>
   </div>
   <div class="row">
     <div class="span4">

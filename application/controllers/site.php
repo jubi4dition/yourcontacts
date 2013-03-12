@@ -63,7 +63,7 @@ class Site extends CI_Controller
     {
         sleep(2);
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|alpha_numeric');
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|callback_alpha_dash_space');
         
         if ($this->form_validation->run() == FALSE) {
             $message = "<strong>Deletion</strong> failed!";
