@@ -27,7 +27,7 @@ class Site extends CI_Controller
     
     public function add_contact()
     {
-        sleep(2);
+        sleep(1);
         $this->load->library('form_validation');
         $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|callback_alpha_dash_space');
         $this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
@@ -61,7 +61,7 @@ class Site extends CI_Controller
     
     public function delete_contact()
     {
-        sleep(2);
+        sleep(1);
         $this->load->library('form_validation');
         $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|callback_alpha_dash_space');
         
@@ -100,7 +100,7 @@ class Site extends CI_Controller
     
     public function edit_contact()
     {
-        sleep(2);
+        sleep(1);
         $this->load->library('form_validation');
         $this->form_validation->set_rules('name', 'Name', 'required|max_length[40]|callback_alpha_dash_space');
         $this->form_validation->set_rules('email', 'Email', 'required|max_length[40]|valid_email');
@@ -150,7 +150,7 @@ class Site extends CI_Controller
     
     public function change_password()
     {
-        sleep(2);
+        sleep(1);
         $this->load->library('form_validation');
         $this->form_validation->set_rules('curpwd', 'Current Password', 'required|max_length[20]|alpha_numeric');
         $this->form_validation->set_rules('newpwd', 'New Password', 'required|max_length[20]|alpha_numeric');
