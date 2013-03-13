@@ -1,7 +1,21 @@
-YOUR CONTACTS
-=============
+YourContacts
+============
 
 This is the Changelog for Your Contacts.
+
+Version 2.2.2
+-------------
+
+* Huge amount of changes
+* Codeigniter 2.1.3, Bootstrap 2.3.1, jQuery 1.9.1
+* totally responsive
+* input-block-level
+* redesign of model
+* no font-awesome
+* better json-response
+* many improvements and fixes
+
+Here are the changes for Version 2.2.2 (2013/03/12)
 
 Version 2.1.0
 -------------
