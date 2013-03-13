@@ -17,14 +17,14 @@
           </tr>
         </thead>
         <tbody>
-        <? for ($i = 0; $i < count($contacts); $i++): ?>
+        <? foreach($contacts as $contact): ?>
           <tr>
-            <td><?=$contacts[$i]['cid']; ?></td>
-            <td><?=$contacts[$i]['name']; ?></td>
-            <td><?=$contacts[$i]['email']; ?></td>
-            <td><?=$contacts[$i]['phone']; ?></td>
+            <td><?=$contact['cid']; ?></td>
+            <td><?=$contact['name']; ?></td>
+            <td><?=$contact['email']; ?></td>
+            <td><?=$contact['phone']; ?></td>
           </tr>
-          <? endfor; ?>
+          <? endforeach; ?>
         </tbody>
       </table>
     </div>

@@ -16,13 +16,13 @@
           </tr>
         </thead>
         <tbody>
-        <? for($i = 0; $i < count($users); $i++): ?>
+        <? foreach($users as $user): ?>
           <tr>
-            <td><?=$users[$i]['uid']; ?></td>
-            <td><?=$users[$i]['email']; ?></td>
-            <td><?=$users[$i]['contacts']; ?></td>
+            <td><?=$user['uid']; ?></td>
+            <td><?=$user['email']; ?></td>
+            <td><?=$user['contacts']; ?></td>
           </tr>
-          <? endfor; ?>
+          <? endforeach; ?>
         </tbody>
       </table>
     </div>

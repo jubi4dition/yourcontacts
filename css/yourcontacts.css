@@ -46,3 +46,7 @@ body {
 .navbar .brand img{
   width: 57px;
 }
+.table-striped tbody > tr:nth-child(odd) > td,
+.table-striped tbody > tr:nth-child(odd) > th {
+  background-color: #f5f5f5;
+}
